@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../stylesheets/game2.css" rel="stylesheet" />
+    <style>
+        body{
+            background-image: none;
+        }
+        body::after {
+            content: "";
+            background: url('../resources/images/new images/לוח.jpg');
+            opacity: 0.5;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+            background-size: 100% 100%;
+        } 
+    </style>
+</head>
+
+<body onload="load()" dir="rtl">
+    <div class="board">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="radio" viewBox="0 0 50 50">
+                <g stroke-linecap="round">
+                    <path d="M47.86 25a22.86 22.86 0 1 1-45.72 0 22.86 22.86 0 1 1 45.72 0z" fill="#fff" stroke="#000"
+                        stroke-width="4.27722432" />
+                    <path id="animated-path"
+                        d="M7.85 16.956c.556-.413 1.17-.73 1.813-.975.552-.12 1.084-.306 1.624-.47.693-.202 1.365-.458 2.03-.74.776-.29 1.534-.625 2.297-.947.99-.368 1.99-.703 3.007-.99.778-.268 1.57-.508 2.33-.83.442-.176.843-.434 1.284-.617.49-.172.995-.305 1.5-.426.554-.14 1.094-.323 1.652-.448.523-.104 1.053-.146 1.57-.274.477-.085.93-.252 1.392-.39.432-.134.866-.262 1.297-.397.466-.08.855-.4 1.32-.48.08-.012.162-.01.243-.01.527.168.59.655.53 1.137-.164.68-.61 1.21-1.074 1.712-.577.57-1.195 1.1-1.835 1.6-.84.643-1.77 1.157-2.696 1.658-.726.328-1.443.675-2.15 1.038-.737.417-1.524.725-2.284 1.092-.79.404-1.583.803-2.39 1.178-.754.378-1.527.716-2.264 1.13.177-.1.347-.212.53-.296.176-.08-.313.218-.467.332-.212.157-.43.29-.654.426-.57.325-1.085.728-1.583 1.15-.49.426-.958.874-1.39 1.36-.516.61-.993 1.256-1.446 1.916-.33.505-.628 1.03-.9 1.57-.24.418-.412.867-.598 1.31-.17.456-.39.892-.552 1.35-.038.19-.124.49.183.427.288-.057.32-.09.605-.21 1.004-.428 1.994-.89 2.98-1.356.985-.44 1.96-.898 2.936-1.357.15-.06.3-.122.45-.18.544-.204.36-.11.892-.337.4-.17.78-.376 1.172-.566.728-.343 1.467-.666 2.172-1.056.358-.213.738-.386 1.104-.583.13-.07.506-.287.38-.215-.143.08-.27.203-.427.242-.154.04.274-.16.412-.24.833-.485 1.61-1.057 2.417-1.586.78-.48 1.52-1.022 2.246-1.58.693-.536 1.34-1.127 2.022-1.678.523-.4 1.065-.773 1.595-1.165.45-.38.953-.68 1.454-.985.447-.288.908-.555 1.35-.854.49-.337.99-.663 1.488-.99.375-.198 1.596-1.272 1.82-.477.024.084.017.174.026.26-.028.76-.254 1.494-.49 2.208-.256.726-.57 1.42-.995 2.06-.426.606-.955 1.122-1.513 1.603-.598.48-1.223.922-1.857 1.35-.943.58-1.898 1.14-2.858 1.69-.122.07-.487.275-.366.206.152-.086.293-.195.456-.258.132-.05-.242.146-.36.222-.386.247-.757.514-1.14.765-.717.43-1.41.9-2.095 1.378-.695.518-1.403 1.015-2.094 1.536-.693.552-1.372 1.12-2.038 1.704-.488.445-1 .863-1.494 1.304-.478.474-.89 1.013-1.293 1.553-.4.49-.74 1.02-1.078 1.555-.314.46-.584.946-.868 1.423-.303.557-.533 1.145-.764 1.733-.25.568-.466 1.15-.745 1.706-.054.187-.338.476.05.356.345-.106.262-.087.643-.278 1.322-.632 2.623-1.31 3.918-1.998 1.09-.516 2.137-1.116 3.2-1.685.524-.313 1.05-.624 1.572-.94.8-.502 1.563-1.062 2.34-1.602.75-.528 1.527-1.015 2.28-1.54.702-.577 1.36-1.204 2.054-1.79.635-.53 1.268-1.063 1.912-1.582.52-.425 1.054-.835 1.572-1.263.44-.413.966-.71 1.477-1.022.73-.48 1.505-.878 2.288-1.26.078-.04.313-.17.235-.126-.785.427-.732.425-.382.174.194-.14.375-.283.55-.443.464-.473.97-1.12 1.69-1.15.082.034.168.052.215.14.148.28.025.698-.025.982-.15.784-.394 1.535-.7 2.27-.253.66-.6 1.276-.93 1.9-.285.58-.617 1.13-1.008 1.647-.44.572-.957 1.072-1.504 1.54-.683.572-1.345 1.167-2.045 1.72-.737.58-1.49 1.14-2.246 1.695-.574.368-1.12.772-1.66 1.19-.56.453-1.106.92-1.65 1.392-.428.41-.934.735-1.346 1.163-.328.407-.67.803-.996 1.213-.33.39-.62.808-.917 1.223-.356.47-.66.974-.98 1.47-.106.192-.244.378-.31.59-.003.01 0 .04.005.03.124-.177-.17.048.178-.167.684-.39 1.397-.718 2.128-1.01.62-.2 1.185-.524 1.775-.793.463-.205.946-.356 1.402-.578.503-.237 1.024-.423 1.52-.675.565-.326 1.15-.613 1.73-.91.58-.288 1.19-.513 1.775-.792.377-.176.303-.137.672-.324.11-.054.426-.236.326-.167-.155.106-.325.188-.49.28-.1.056.2-.117.302-.175l1.108-.636c.195-.113.397-.215.594-.323.096-.054.38-.216.284-.163-1.17.655-.338.172-.09-.01.262-.196.504-.418.743-.642l.886-.364c-.24.228-.48.454-.743.655-.754.56-1.595.985-2.414 1.44.17-.1.344-.2.516-.3.1-.06-.202.116-.303.174-.7.403-1.393.82-2.136 1.143-.587.274-1.194.502-1.772.795-.583.297-1.165.592-1.735.912-.5.243-1.02.432-1.522.673-.46.215-.944.368-1.405.58-.584.273-1.154.575-1.767.78-.735.298-1.45.637-2.138 1.03-.06.026-.112.07-.176.077-.354.033.156-.686.18-.75.324-.493.623-1.002.98-1.473.296-.414.58-.838.91-1.225.322-.415.677-.803.996-1.22.397-.45.923-.76 1.353-1.178.543-.47 1.09-.937 1.644-1.393.542-.418 1.083-.838 1.67-1.198.758-.553 1.51-1.115 2.25-1.694.7-.547 1.357-1.142 2.037-1.713.548-.46 1.067-.954 1.51-1.52.394-.51.73-1.053 1.013-1.632.33-.623.684-1.236.94-1.895.31-.726.553-1.47.7-2.247.036-.196.16-.693.06-.886-.035-.065-.11-.062-.17-.072-.342.084-.367.103.553-.38.058-.03-.097.088-.145.133-.19.178-.103.096-.285.295-.048.053-.098.105-.147.157-.586.572-1.323.97-2.037 1.357-.28.137-1.755.92-.39.16.087-.048-.173.106-.26.16-.506.315-1.045.594-1.48 1.01-.52.43-1.057.84-1.58 1.266-.648.516-1.28 1.053-1.917 1.582-.7.582-1.36 1.207-2.05 1.798-.754.526-1.53 1.016-2.286 1.54-.777.54-1.538 1.102-2.336 1.61-.747.454-.427.264-1.606.944-.137.08.252-.22.41-.24.146-.02-.25.16-.376.236-.88.52-.95.558-1.605.925-1.053.57-2.1 1.147-3.18 1.667-1.306.688-2.614 1.376-3.944 2.015-.394.182-1.29.598-.826-.274.287-.55.495-1.134.75-1.698.233-.59.46-1.183.756-1.747.288-.475.546-.966.862-1.424.346-.534.68-1.074 1.086-1.565.398-.546.813-1.082 1.28-1.57.494-.443 1.01-.862 1.502-1.307.667-.587 1.35-1.156 2.04-1.713.688-.524 1.397-1.016 2.087-1.536.687-.48 1.38-.956 2.102-1.383.992-.645 1.95-1.342 3.017-1.87l-.46.27c-.115.07.23-.13.344-.2.452-.274.9-.556 1.36-.82.634-.424 1.258-.867 1.86-1.34.56-.472 1.09-.982 1.52-1.58.433-.63.752-1.316 1.01-2.038.235-.702.458-1.42.493-2.165-.008-.153.008-.392-.213-.412-.068-.01-.254.078-.202.033.036-.03 1.042-.64.307-.195-.5.323-.992.654-1.485.987-.44.306-.904.57-1.353.86-.5.305-1.01.596-1.455.978-.53.395-1.076.768-1.605 1.165-.687.547-1.334 1.14-2.027 1.682-.726.558-1.46 1.106-2.242 1.586-.81.527-1.586 1.102-2.417 1.593-1.017.59-2.033 1.184-3.08 1.724-.708.383-1.446.707-2.174 1.052-.825.402-1.64.77-2.508 1.077-.973.46-1.95.91-2.93 1.35-.992.47-1.987.936-2.998 1.366-.497.188-1.068.387-.91-.395.152-.464.386-.896.55-1.357.192-.442.346-.9.597-1.318.27-.543.57-1.074.903-1.583.454-.66.927-1.307 1.435-1.926.43-.49.898-.943 1.39-1.373.493-.424 1.003-.834 1.568-1.162.757-.447 1.416-1.027 2.22-1.4.74-.406 1.512-.746 2.266-1.123.805-.375 1.595-.78 2.39-1.18.76-.363 1.544-.676 2.28-1.092.71-.36 1.428-.705 2.15-1.042.116-.062.456-.265.348-.19-.147.104-.308.187-.466.274-.112.062.222-.13.33-.198.2-.126.398-.254.59-.39.095-.066.185-.138.277-.207.644-.494 1.26-1.024 1.84-1.59.46-.487.908-.993 1.09-1.654.07-.413.044-.886-.444-.99-.55.055-1.014.378-1.55.506-.43.137-.865.26-1.297.396-.463.142-.92.296-1.395.386-.518.116-1.047.16-1.566.268-.56.13-1.098.323-1.656.453-.503.124-1.008.254-1.493.44-.43.194-.837.443-1.28.613-.76.306-1.542.553-2.32.808-1.014.29-2.018.626-3.005 1.005-.764.323-1.524.658-2.3.95-.668.28-1.346.532-2.04.737-.54.17-1.08.334-1.627.48-.117.046-.285.11-.4.164-.063.03-.243.13-.184.095 1.224-.744.688-.417.43-.23l-.905.355z"
+                        fill="none" stroke="#f18171" stroke-width="4" stroke-dasharray="410.00 410.00"
+                        stroke-dashoffset="411.00" />
+                </g>
+            </symbol>
+        </svg>
+        <a href="../index.html">
+            <img id="home" title="בחזרה לדף הבית" src="../resources/images/תמונות לפרויקט/home.png" /></a>
+
+        <!--<div class="player1_section">
+            <div id="img1"><img src="../game1/Images/3.JPG" /></div>
+        </div>-->
+        <div class="player1_section playerSection">
+            <h1 class="playerName"></h1>
+            <div id="point1" class="points"></div>
+            <div id="bee1" class="bee">
+                <img src="../resources/images/תמונות לפרויקט/דבורה 1.png" />
+            </div>
+            <div id="honeyDiv1" class="honey">
+                <img id="honey1" src="../resources/images/תמונות לפרויקט/D1.png" />
+                <div id="timer"></div>
+            </div>
+        </div>
+        <div id="wapperbutton" dir="ltr">
+            <div id="allHevagon">
+                <div class="row" id="row1">
+                    <div class="hexagon hexagon1" id="b0" onclick="question(0)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b1" onclick="question(1)">
+                        <p class="text"></p>
+                    </div>
+                </div>
+                <div class="row" id="row2">
+                    <div class="hexagon hexagon1" id="b2" onclick="question(2)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b3" onclick="question(3)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b4" onclick="question(4)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b5" onclick="question(5)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b6" onclick="question(6)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b7" onclick="question(7)">
+                        <p class="text"></p>
+                    </div>
+                </div>
+                <div class="row" id="row3">
+                    <div class="hexagon hexagon1" id="b8" onclick="question(8)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b9" onclick="question(9)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b10" onclick="question(10)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b11" onclick="question(11)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b12" onclick="question(12)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b13" onclick="question(13)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b14" onclick="question(14)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b15" onclick="question(15)">
+                        <p class="text"></p>
+                    </div>
+                </div>
+                <div class="row" id="row4">
+                    <div class="hexagon hexagon1" id="b16" onclick="question(16)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b17" onclick="question(17)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b18" onclick="question(18)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b19" onclick="question(19)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b20" onclick="question(20)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b21" onclick="question(21)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b22" onclick="question(22)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b23" onclick="question(23)">
+                        <p class="text"></p>
+                    </div>
+                </div>
+                <div class="row" id="row5">
+                    <div class="hexagon hexagon1" id="b24" onclick="question(24)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b25" onclick="question(25)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b26" onclick="question(26)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b27" onclick="question(27)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b28" onclick="question(28)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b29" onclick="question(29)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b30" onclick="question(30)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b31" onclick="question(31)">
+                        <p class="text"></p>
+                    </div>
+                </div>
+                <div class="row" id="row6">
+                    <div class="hexagon hexagon1" id="b32" onclick="question(32)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b33" onclick="question(33)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b34" onclick="question(34)">
+                        <p class="text"></p>
+                    </div>
+                    <div class="hexagon hexagon1" id="b35" onclick="question(35)">
+                        <p class="text"></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="custom-alert">
+            <div class="alert-container">
+                <div id="question">
+                    <div id="listQuestions"></div>
+                </div>
+                <!--class="addToDiv"-->
+                <div id="question-result" style="display: none;"></div>
+                <div id="number-chooser" style="display: none;">
+                    <form onsubmit="onNumberChoosenClick(event);return false">
+                        <input name="numberValue" type="number" min="1" max="4" required />
+                        <input type="submit" value="אישור" />
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="player2_section playerSection">
+            <h1 class="playerName"></h1>
+            <div id="point2" class="points"></div>
+            <div id="bee2" class="bee">
+                <img src="../resources/images/תמונות לפרויקט/דבורה 2.png" />
+            </div>
+            <div id="honeyDiv2" class="honey">
+                <img id="honey2" src="../resources/images/תמונות לפרויקט/D1.png" />
+            </div>
+        </div>
+        <div id="winningMessage"></div>
+    </div>
+    <!--<script src="game2.js" type="text/javascript"></script>-->
+    <!--<img src="images/תמונות לפרויקט/D1.png" />
+    <img src="images/תמונות לפרויקט/D2.png" />
+    <img src="images/תמונות לפרויקט/D3.png" />
+    <img src="images/תמונות לפרויקט/D4.png" />
+    <img src="images/תמונות לפרויקט/D5.png" />
+    <img src="images/תמונות לפרויקט/D6.png" />
+    <img src="images/תמונות לפרויקט/D7.png" />
+    <img src="images/תמונות לפרויקט/D8.png" />
+    <img src="images/תמונות לפרויקט/D9.png" />
+    <img src="images/תמונות לפרויקט/D10.png" />
+    <img src="images/תמונות לפרויקט/D11.png" />
+    <img src="images/תמונות לפרויקט/D12.png" />
+    <img src="images/תמונות לפרויקט/D13.png" />
+    <img src="images/תמונות לפרויקט/D14.png" />
+    <img src="images/תמונות לפרויקט/D15.png" />
+    <img src="images/תמונות לפרויקט/D16.png" />
+    <img src="images/תמונות לפרויקט/D17.png" />
+    <img src="images/תמונות לפרויקט/D18.png" />
+    <img src="images/תמונות לפרויקט/דבורה 1.png" />
+    <img src="images/תמונות לפרויקט/דבורה 2.png" />-->
+    <!--<img src="images/תמונות לפרויקט/משושה.png" />-->
+    <!--<img src="images/תמונות לפרויקט/משושה1.png" />
+    <img src="images/תמונות לפרויקט/משושה2.png" />
+
+    <img src="images/תמונות לפרויקט/משושה3.png" />
+    <img src="images/תמונות לפרויקט/משושה4.png" />-->
+    <!--//new images
+    <img src="images/new images/_____ץ___פ.png" />
+    <img src="images/new images/_____ץ___פ1.png" />
+    <img src="images/new images/_____ץ___פ2.png" />
+    <img src="images/new images/_____ץ___פ3.png" />
+    <img src="images/new images/_____ץ___פ4.png" />
+    <img src="images/new images/_____ץ___פ5.png" />
+    <img src="images/new images/_____ץ_ƒ _ק_ץ_£ (1).png" />
+    <img src="images/new images/_____ץ_ƒ _ק_ץ_£ 2.png" />
+    <img src="images/new images/_____ץ_ƒ _ק_ץ_£ 3.png" />
+    <img src="images/new images/_¿____ _¢_ץ_ץ_¿_¬-01.jpg" />
+    <img src="images/new images/2.png" />-->
+    <div style="position: fixed; z-index: -1; visibility: hidden;">
+        <img src="../resources/images/תמונות לפרויקט/D1.png">
+        <img src="../resources/images/תמונות לפרויקט/D2.png">
+        <img src="../resources/images/תמונות לפרויקט/D3.png">
+        <img src="../resources/images/תמונות לפרויקט/D4.png">
+        <img src="../resources/images/תמונות לפרויקט/D5.png">
+        <img src="../resources/images/תמונות לפרויקט/D6.png">
+        <img src="../resources/images/תמונות לפרויקט/D7.png">
+        <img src="../resources/images/תמונות לפרויקט/D8.png">
+        <img src="../resources/images/תמונות לפרויקט/D9.png">
+        <img src="../resources/images/תמונות לפרויקט/D10.png">
+        <img src="../resources/images/תמונות לפרויקט/D11.png">
+        <img src="../resources/images/תמונות לפרויקט/D12.png">
+        <img src="../resources/images/תמונות לפרויקט/D13.png">
+        <img src="../resources/images/תמונות לפרויקט/D14.png">
+        <img src="../resources/images/תמונות לפרויקט/D15.png">
+        <img src="../resources/images/תמונות לפרויקט/D16.png">
+        <img src="../resources/images/תמונות לפרויקט/D17.png">
+        <img src="../resources/images/תמונות לפרויקט/D18.png">
+    </div>
+    <script type="text/javascript" src="../data/data.js"></script>
+    <script type="text/javascript" src="../scripts/setData.js"></script>
+    <script type="text/javascript" src="../scripts/game2.js"></script>
+</body>
+
+</html>

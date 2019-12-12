@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>הכנסת שאלות</title>
+    <link href="../stylesheets/w3.css" rel="stylesheet" />
+
+    <style>
+        @font-face {
+            font-family: 'myFont';
+            src: url("../resources/fonts/MPLUS1p-Regular.ttf");
+        }
+
+        @media screen and (max-width: 400px) {
+            .navbar a {
+                float: none;
+                width: 100%;
+            }
+        }
+        body {
+            font-family: myFont;
+            margin: 0;
+            direction: rtl;
+            color: #948e8b;
+        }
+
+        .question-card {
+            display: inline-block;
+            width: 250px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: #f5ce4f 0px 0px 12.7px 4px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+        }
+
+        ul {
+            background-color: #948e8b;
+            color: white;
+        }
+
+        .primary-button {
+            color: #948e8b;
+            background-color: #f5ce4f;
+        }
+
+        h4 {
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: myFont;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            font-size: 40px;
+            display: inline-block;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: rgb(87, 84, 84);
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a.right {
+            float: right;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar a.active {
+            background-color: #666;
+            color: white;
+        }
+
+        .header {
+            padding: 10px;
+            text-align: center;
+            background: #ffd801;
+            color: rgb(139, 136, 136);
+            font-size: 30px;
+            width: 100%;
+        }
+
+        #logo:hover {
+            width: 5%;
+            opacity: 0.3;
+        }
+
+        #logo {
+            width: 3%;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f89c1c;
+            color: rgb(139, 136, 136);
+            text-align: center;
+        }
+    </style>
+    <!--<script src="../js/classQuestion.js"></script>
+    <script src="../js/data.js"></script>
+   <script src="../js/global.js"></script>
+    <script src="../js/initQuestion.js"></script>-->
+
+
+</head>
+
+<body onload="onLoad()">
+    <div class="header">
+        <h1>Ten10</h1>
+        <img id="logo" src="../resources/images/תמונות לפרויקט/דבורה 2.png">
+    </div>
+    <div class="navbar">
+        <a href="../index.html" class="active">בית</a>
+        <a href="./bord.html">משחק</a>
+        <a href="./abaut.html">אודות</a>
+        <a href="./instructions.html" class="right">הוראות</a>
+    </div>
+    <ul class="w3-navbar">
+        <li class="w3-right"><a class="primary-button" href="../index.html">חזרה</a></li>
+        <li class="w3-right"><a href="#" onclick="openTab('setQuestion')">שאלות</a></li>
+        <li class="w3-right"><a href="#" onclick="openTab('setPlayersName')">שמות שחקנים</a></li>
+        <li class="w3-right"><a href="#" onclick="openTab('setting')">הגדרות כלליות</a></li>
+        <li class="w3-right"><a href="#" onclick="fillArrary(); return false;">שמירה</a></li>
+    </ul>
+    <div id="tabs">
+        <div id="setQuestion" class="w3-container city">
+            <h2>עריכת שאלות</h2>
+            <input type="button" class="w3-btn primary-button" value="הוסף שאלה" id="addQuestionButton"
+                onclick="addQuestion(true)" />
+            <div id="questionWrapper">
+                <form id="fillDataQuestion"></form>
+            </div>
+        </div>
+
+        <div id="setPlayersName" class="w3-container city">
+            <h2>עריכת שמות שחקנים</h2>
+            <div id="questionWrapper">
+                <form id="fillDataPlayersName">
+                    <input type="text" id="player1Name" save-as="player1Name" class="w3-input w3-border">
+                    <input type="text" id="player2Name" save-as="player2Name" class="w3-input w3-border">
+                </form>
+            </div>
+        </div>
+
+        <div id="setting" class="w3-container city">
+            <h2>הגדרות כלליות</h2>
+            <label>זמן לתור (בשניות)</label>
+            <input type="number" min="1" id="questionTimer" save-as="questionTimer" class="w3-input w3-border">
+            <label>זמן להצגת הודעה (בשניות)</label>
+            <input type="number" min="1" id="showMessageDuration" save-as="showMessageDuration"
+                class="w3-input w3-border">
+            <label>מספר נקודות מינימום</label>
+            <input type="number" min="0" id="minPoints" save-as="minPoints" class="w3-input w3-border">
+            <label>מספר נקודות מקסימום</label>
+            <input type="number" min="1" id="maxPoints" save-as="maxPoints" class="w3-input w3-border">
+            <!-- <label>מספר נקודות בונוס</label>
+            <input type="number" min="1" id="bonusPoints" save-as="bonusPoints" class="w3-input w3-border">-->
+            <label>הודעה עבור תשובה נכונה</label>
+            <input type="text" id="correctAnswerMessage" save-as="correctAnswerMessage" class="w3-input w3-border">
+            <label>הודעה עבור תשובה שגויה</label>
+            <input type="text" id="wrongAnswerMessage" save-as="wrongAnswerMessage" class="w3-input w3-border">
+            <!-- <label>הודעה לבחירת מספר בין 1-4</label>
+            <input type="text" id="chooseNumberMessage" save-as="chooseNumberMessage" class="w3-input w3-border">
+            <label>הודעה כאשר תם הזמן</label> -->
+            <input type="text" id="timeEndMessage" save-as="timeEndMessage" class="w3-input w3-border">
+        </div>
+    </div>
+
+
+
+
+    <div id="msgAlert" class="w3-modal" dir="ltr">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <span onclick="document.getElementById('msgAlert').style.display='none'"
+                    class="w3-closebtn">&times;</span>
+                <button onclick="copyToClip(document.getElementById('msgp').innerHTML)"> העתק </button>
+                <h4> ושמרי data/data.js :העתיקי את הטקסט שמתחת, לקובץ הבא</h4>
+                <textarea id="msgp" style="text-align:center;">Some text. Some text. Some text.</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Rivki & Racheli 2020 &copy;</p>
+    </div>
+    <script src="../data/data.js"></script>
+    <script type="text/javascript" src="../scripts/setData.js"></script>
+    <script src="../scripts/settings.js"></script>
+
+</body>
+
+</html>
