@@ -1,0 +1,125 @@
+USE [master]
+GO
+/****** Object:  Database [questions]    Script Date: 17/12/2019 18:56:27 ******/
+CREATE DATABASE [questions]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'questions', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\questions.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'questions_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\questions_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [questions] SET COMPATIBILITY_LEVEL = 110
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [questions].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [questions] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [questions] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [questions] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [questions] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [questions] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [questions] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [questions] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [questions] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [questions] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [questions] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [questions] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [questions] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [questions] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [questions] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [questions] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [questions] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [questions] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [questions] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [questions] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [questions] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [questions] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [questions] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [questions] SET RECOVERY FULL 
+GO
+ALTER DATABASE [questions] SET  MULTI_USER 
+GO
+ALTER DATABASE [questions] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [questions] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [questions] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [questions] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'questions', N'ON'
+GO
+USE [questions]
+GO
+/****** Object:  Table [dbo].[Questions]    Script Date: 17/12/2019 18:56:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Questions](
+	[questionId] [int] NOT NULL,
+	[questionDesc] [nvarchar](20) NOT NULL,
+	[answer1] [nvarchar](20) NOT NULL,
+	[answer2] [nvarchar](20) NOT NULL,
+	[answer3] [nvarchar](20) NOT NULL,
+	[correctAnswer] [nvarchar](20) NOT NULL,
+	[questionnaire] [int] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Teachers]    Script Date: 17/12/2019 18:56:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Teachers](
+	[teacherId] [int] NOT NULL,
+	[teacherName] [nvarchar](30) NULL,
+	[subject] [nvarchar](20) NOT NULL,
+	[matter] [nvarchar](20) NOT NULL,
+	[class] [nvarchar](1) NOT NULL,
+	[questionnaire] [int] NOT NULL,
+ CONSTRAINT [PK_Teachers] PRIMARY KEY CLUSTERED 
+(
+	[questionnaire] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Questions]    Script Date: 17/12/2019 18:56:27 ******/
+CREATE NONCLUSTERED INDEX [IX_Questions] ON [dbo].[Questions]
+(
+	[questionId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Questions]  WITH CHECK ADD  CONSTRAINT [FK_Questions_Teachers] FOREIGN KEY([questionnaire])
+REFERENCES [dbo].[Teachers] ([questionnaire])
+GO
+ALTER TABLE [dbo].[Questions] CHECK CONSTRAINT [FK_Questions_Teachers]
+GO
+USE [master]
+GO
+ALTER DATABASE [questions] SET  READ_WRITE 
+GO
