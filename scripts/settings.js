@@ -134,7 +134,7 @@ function fillArrary() {//onclick 'save'
     var encodedString = encodeURIComponent(dataString);
     encodedString = btoa(encodedString);
     var evalString = 'eval(decodeURIComponent(atob("' + encodedString + '")));';
-    saveAlert(evalString);
+    //saveAlert(evalString);
 }
 function openTab(tabName) {
     var i;
