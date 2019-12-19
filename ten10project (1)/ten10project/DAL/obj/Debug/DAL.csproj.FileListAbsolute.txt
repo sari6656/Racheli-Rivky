@@ -1,0 +1,4 @@
+C:\Users\rachetan\Racheli-Rivky\ten10project\DAL\bin\Debug\DAL.dll
+C:\Users\rachetan\Racheli-Rivky\ten10project\DAL\bin\Debug\DAL.pdb
+C:\Users\rachetan\Racheli-Rivky\ten10project\DAL\obj\Debug\DAL.dll
+C:\Users\rachetan\Racheli-Rivky\ten10project\DAL\obj\Debug\DAL.pdb
