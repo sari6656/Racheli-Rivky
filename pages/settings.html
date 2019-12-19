@@ -32,7 +32,7 @@
         <li class="w3-right"><a href="#" onclick="openTab('setPlayersName')">שמות שחקנים</a></li>
         <li class="w3-right"><a href="#" onclick="openTab('setting')">הגדרות כלליות</a></li>
         <li class="w3-right"><a href="#" onclick="openTab('getQuestions')">לבחירת שאלות ממאגר קיים</a></li>
-        <li class="w3-right"><a href="#" onclick="fillArrary(); return false;">שמירה</a></li>
+        <li class="w3-right"><a href="#" onclick="openTab('save')">שמירה</a></li>
     </ul>
     <div id="tabs">
         <div id="setQuestion" class="w3-container city">
@@ -41,18 +41,6 @@
                 onclick="addQuestion(true)" />
             <div id="questionWrapper">
                 <form id="fillDataQuestion"></form>
-            </div>
-            <div>
-                <form id="questionnaireDetails" onsubmit="sendQuestionsToServer()">
-                    <p>כדי שהשאלות יישמרו במערכת אנא מלאי את הפרטים הבאים:</p>
-                    <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="שם המורה" />
-                    <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="מקצוע השאלות" />
-                    <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="נושא השאלות" />
-                    <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="כיתה" />
-                    <input type="submit" class="questionnaireDetailsInput" value="לשמירה" />
-                    <!-- <asp:HiddenField id="sendDataToServer" runat="server"/> -->
-                    <div id="hg"></div>
-                </form>
             </div>
         </div>
 
@@ -89,6 +77,29 @@
             <input type="text" id="timeEndMessage" save-as="timeEndMessage" class="w3-input w3-border">
         </div>
     </div>
+
+    <div id="save" class="w3-container city">
+        <form id="questionnaireDetails" onsubmit="sendQuestionsToServer()">
+            <p>כדי שהשאלות יישמרו במערכת אנא מלאי את הפרטים הבאים:</p>
+            <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="שם המורה" />
+            <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="מקצוע השאלות" />
+            <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="נושא השאלות" />
+            <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="כיתה" />
+            <input type="submit" class="questionnaireDetailsInput" value="לשמירה" />
+            <!-- <asp:HiddenField id="sendDataToServer" runat="server"/> -->
+        </form>
+    </div>
+    <div id="msgAlert" class="w3-modal" dir="ltr">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <span onclick="document.getElementById('msgAlert').style.display='none'"
+                    class="w3-closebtn">&times;</span>
+                <button onclick="copyToClip(document.getElementById('msgp').innerHTML)"> העתק </button>
+                <h4> ושמרי data/data.js :העתיקי את הטקסט שמתחת, לקובץ הבא</h4>
+                <textarea id="msgp" style="text-align:center;">Some text. Some text. Some text.</textarea>
+            </div>
+        </div>
+    </div>
     <div id="getQuestions" class="w3-container city">
         <h2>חיפוש שאלות ממאגר השאלות</h2>
         <div class="dropdown">
@@ -105,24 +116,12 @@
             </div>
         </div>
         <!-- <form id="searchQuestions">
-            <input type="text" id="searchBySub" save-as="searchBySub" placeholder="לחיפוש לפי מקצוע" class="w3-input w3-border">
-            <input type="text" id="searchByClass" save-as="searchByClass" placeholder="לחיפוש לפי כיתה" class="w3-input w3-border">
-        </form> -->
+                <input type="text" id="searchBySub" save-as="searchBySub" placeholder="לחיפוש לפי מקצוע" class="w3-input w3-border">
+                <input type="text" id="searchByClass" save-as="searchByClass" placeholder="לחיפוש לפי כיתה" class="w3-input w3-border">
+            </form> -->
     </div>
 
 
-
-    <div id="msgAlert" class="w3-modal" dir="ltr">
-        <div class="w3-modal-content">
-            <div class="w3-container">
-                <span onclick="document.getElementById('msgAlert').style.display='none'"
-                    class="w3-closebtn">&times;</span>
-                <button onclick="copyToClip(document.getElementById('msgp').innerHTML)"> העתק </button>
-                <h4> ושמרי data/data.js :העתיקי את הטקסט שמתחת, לקובץ הבא</h4>
-                <textarea id="msgp" style="text-align:center;">Some text. Some text. Some text.</textarea>
-            </div>
-        </div>
-    </div>
     <div class="footer">
         <p dir="ltr">Rivki & Racheli 2020 &copy;</p>
     </div>

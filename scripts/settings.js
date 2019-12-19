@@ -179,6 +179,7 @@ function copyToClip(str) {
 };
 
 function sendQuestionsToServer() {
+    fillArrary();
     var dataQuestions = { detailsQuestions: [] };
     var details = document.getElementsByClassName('dataToServer');
     for (var x = 0; x < details.length; x++) {
