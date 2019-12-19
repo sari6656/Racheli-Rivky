@@ -186,13 +186,13 @@ function sendQuestionsToServer() {
         var abg = new String(details[x].value);
         dataQuestions.detailsQuestions.push({ abg: (details[x].value) });
     }
-   alert( $.post("https://localhost:44399/api/my/Get", { ttttt:dataQuestions}));
+    //    alert( $.post("https://localhost:44399/api/my/Get", { ttttt:dataQuestions}));
     // $(function() {
     //     $.getJSON("https://localhost:44399/api/Values/GetEmployer", function(crewResponse) {
     //         dataQuestions = crewResponse.dataQuestions;
     //     });
     // });
-    
+
     // $.ajax({
     //     contentType: "text/html; charset=utf-8",
     //     url: "https://localhost:44399/api/my",
@@ -204,9 +204,9 @@ function sendQuestionsToServer() {
     //         $("#hg").InnerHtml(data);
     //         // history.pushState('', 'New URL: '+href, href); // This Code lets you to change url howyouwant
     //     }});
-       
-    
-   
+
+
+
     // var questionsDetails = document.getElementById('sendDataToServer');
     // questionsDetails.value =dataQuestions;
 }
@@ -214,20 +214,28 @@ function sendQuestionsToServer() {
 
 function searchBySub() {
     document.getElementById("myDropdown").classList.toggle("show");
-  }
-  
-  function filterFunction() {
+}
+
+function filterFunction() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     div = document.getElementById("myDropdown");
     a = div.getElementsByTagName("a");
     for (i = 0; i < a.length; i++) {
-      txtValue = a[i].textContent || a[i].innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        a[i].style.display = "";
-      } else {
-        a[i].style.display = "none";
-      }
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
     }
-  }
+}
+function setInputValue() {
+    document.getElementById('myInput').value = event.target.innerText;
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        a[i].style.display = "none";
+    }
+}

@@ -6,3 +6,11 @@ C:\Users\rachetan\Racheli-Rivky\ten10project\BLL\obj\Debug\BLL.csprojAssemblyRef
 C:\Users\rachetan\Racheli-Rivky\ten10project\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\rachetan\Racheli-Rivky\ten10project\BLL\obj\Debug\BLL.dll
 C:\Users\rachetan\Racheli-Rivky\ten10project\BLL\obj\Debug\BLL.pdb
+C:\Users\rachetan\Racheli-Rivky\ten10project (1)\ten10project\BLL\bin\Debug\BLL.dll
+C:\Users\rachetan\Racheli-Rivky\ten10project (1)\ten10project\BLL\bin\Debug\BLL.pdb
+C:\Users\rachetan\Racheli-Rivky\ten10project (1)\ten10project\BLL\bin\Debug\DAL.dll
+C:\Users\rachetan\Racheli-Rivky\ten10project (1)\ten10project\BLL\bin\Debug\DAL.pdb
+C:\Users\rachetan\Racheli-Rivky\ten10project (1)\ten10project\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\rachetan\Racheli-Rivky\ten10project (1)\ten10project\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\rachetan\Racheli-Rivky\ten10project (1)\ten10project\BLL\obj\Debug\BLL.dll
+C:\Users\rachetan\Racheli-Rivky\ten10project (1)\ten10project\BLL\obj\Debug\BLL.pdb
