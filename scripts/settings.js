@@ -43,7 +43,7 @@ function addQuestion(addFirst) {//make the tamplate
     input.setAttribute('value', 'הסר שאלה');
     input.addEventListener("click", function () { removeQuestion(event); })
     para.appendChild(input);
-    if(addFirst) {
+    if (addFirst) {
         document.querySelector("#fillDataQuestion").prepend(para);
     } else {
         document.querySelector("#fillDataQuestion").appendChild(para);
@@ -58,7 +58,7 @@ function removeQuestion(e) {
 
 
 function fillDivs() {//on click 'view the questions'
-//e.target.classList.add("w3-disabled")
+    //e.target.classList.add("w3-disabled")
     var divInForm;
     for (var i = 0; i < data.questions.length; i++) {
         addQuestion();
@@ -88,17 +88,17 @@ function fillArrary() {//onclick 'save'
         question.answer2 = inputInDiv[2].value;
         question.answer3 = inputInDiv[3].value;
         question.correctAnswer = inputInDiv[4].value;
-        if(question.correctAnswer < 1 || question.correctAnswer > 3 
-            || !question.question 
-            || !question.answer1 
-            || !question.answer2 
+        if (question.correctAnswer < 1 || question.correctAnswer > 3
+            || !question.question
+            || !question.answer1
+            || !question.answer2
             || !question.answer3
             || !question.correctAnswer) {
-                alert("שימי לב! הערכים עבור שאלה מספר:" + (i+1) + " אינם תקינים");
-                return;
+            alert("שימי לב! הערכים עבור שאלה מספר:" + (i + 1) + " אינם תקינים");
+            return;
         } else {
             questionsToSave.push(question);
-        }    
+        }
     }
     for (var i = 0; i < divInForm.length; i++) {
         console.log(data.questions[i]);
@@ -107,24 +107,24 @@ function fillArrary() {//onclick 'save'
     dataObjForSave.date = new Date();
     var generalSettings = '';
     var generalSettingsInputs = document.querySelectorAll('[save-as]');
-    for(var i = 0; i < generalSettingsInputs.length; i++ ){
+    for (var i = 0; i < generalSettingsInputs.length; i++) {
         var input = generalSettingsInputs[i];
         var inputValue = input.value;
-        if(!inputValue) {
+        if (!inputValue) {
             alert("יש למלא את כל השדות לפני השמירה");
             return;
-        } else if(inputValue === '0' && input.min != '0'){
+        } else if (inputValue === '0' && input.min != '0') {
             alert("הערך 0 לא חוקי עבור שמות שחקנים והגדרות כלליות");
             return;
         }
-    
+
         //TODO add validation
-        dataObjForSave[input.getAttribute('save-as')] =  inputValue;
+        dataObjForSave[input.getAttribute('save-as')] = inputValue;
     }
 
     dataObjForSave.questions = questionsToSave;
     var dataForSaveString = JSON.stringify(dataObjForSave);
-    try{
+    try {
         localStorage.setItem('gameSetting', dataForSaveString);
     } catch (error) {
         console.log('error on reading from local storage')
@@ -133,8 +133,8 @@ function fillArrary() {//onclick 'save'
     var dataString = 'var savedData = ' + dataForSaveString;
     var encodedString = encodeURIComponent(dataString);
     encodedString = btoa(encodedString);
-    var evalString = 'eval(decodeURIComponent(atob("'  + encodedString  + '")));';
-    //saveAlert(evalString);
+    var evalString = 'eval(decodeURIComponent(atob("' + encodedString + '")));';
+    saveAlert(evalString);
 }
 function openTab(tabName) {
     var i;
@@ -149,13 +149,12 @@ function onLoad() {
     if (document.getElementsByClassName("city").length)
         openTab("setQuestion");
     var generalSettingsInputs = document.querySelectorAll('[save-as]');
-    for(var i = 0; i < generalSettingsInputs.length; i++ ){
+    for (var i = 0; i < generalSettingsInputs.length; i++) {
         var input = generalSettingsInputs[i];
-        if(typeof data[input.getAttribute('save-as')] !== 'undefined' && data[input.getAttribute('save-as')] !== null) {
+        if (typeof data[input.getAttribute('save-as')] !== 'undefined' && data[input.getAttribute('save-as')] !== null) {
             input.value = data[input.getAttribute('save-as')];
         }
     }
-    
 }
 
 function saveAlert(msg) {
@@ -179,3 +178,55 @@ function copyToClip(str) {
 
 };
 
+function sendQuestionsToServer() {
+    var dataQuestions = { detailsQuestions: [] };
+    var details = document.getElementsByClassName('dataToServer');
+    for (var x = 0; x < details.length; x++) {
+        var abg = new String(details[x].value);
+        dataQuestions.detailsQuestions.push({ abg: (details[x].value) });
+    }
+   alert( $.post("https://localhost:44399/api/my/Get", { ttttt:dataQuestions}));
+    // $(function() {
+    //     $.getJSON("https://localhost:44399/api/Values/GetEmployer", function(crewResponse) {
+    //         dataQuestions = crewResponse.dataQuestions;
+    //     });
+    // });
+    
+    // $.ajax({
+    //     contentType: "text/html; charset=utf-8",
+    //     url: "https://localhost:44399/api/my",
+    //     type: "POST",
+    //     dataType: "string",  
+    //     data: new String(dataQuestions) ,
+    //     success: function (data) {
+    //         debbuger;
+    //         $("#hg").InnerHtml(data);
+    //         // history.pushState('', 'New URL: '+href, href); // This Code lets you to change url howyouwant
+    //     }});
+       
+    
+   
+    // var questionsDetails = document.getElementById('sendDataToServer');
+    // questionsDetails.value =dataQuestions;
+}
+
+
+function searchBySub() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+      txtValue = a[i].textContent || a[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a[i].style.display = "";
+      } else {
+        a[i].style.display = "none";
+      }
+    }
+  }

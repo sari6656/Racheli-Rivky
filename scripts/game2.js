@@ -1,7 +1,7 @@
 ﻿
 var games=0;
 var time;
-var bonusOrNumber = [ "number", "number", "number", "number","number", "number","number","number", "השלם ל-10", "השלם ל-10"];
+var bonusOrNumber = [ "number", "number", "number", "number","number", "number","number","קבל 2 מהיריב", "השלם ל-10", "השלם ל-10"];
 
 var honey = ["../resources/images/תמונות לפרויקט/D1.png", "../resources/images/תמונות לפרויקט/D3.png", "../resources/images/תמונות לפרויקט/D5.png", "../resources/images/תמונות לפרויקט/D7.png", "../resources/images/תמונות לפרויקט/D9.png", "../resources/images/תמונות לפרויקט/D11.png", "../resources/images/תמונות לפרויקט/D13.png", "../resources/images/תמונות לפרויקט/D15.png", "../resources/images/תמונות לפרויקט/D17.png", "../resources/images/תמונות לפרויקט/D18.png", ];
 var players = [

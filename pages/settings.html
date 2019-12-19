@@ -4,122 +4,9 @@
 <head>
     <title>הכנסת שאלות</title>
     <link href="../stylesheets/w3.css" rel="stylesheet" />
+    <link href="../stylesheets/settings.css" rel="stylesheet" />
 
-    <style>
-        @font-face {
-            font-family: 'myFont';
-            src: url("../resources/fonts/MPLUS1p-Regular.ttf");
-        }
 
-        @media screen and (max-width: 400px) {
-            .navbar a {
-                float: none;
-                width: 100%;
-            }
-        }
-        body {
-            font-family: myFont;
-            margin: 0;
-            direction: rtl;
-            color: #948e8b;
-        }
-
-        .question-card {
-            display: inline-block;
-            width: 250px;
-            margin: 20px;
-            padding: 20px;
-            box-shadow: #f5ce4f 0px 0px 12.7px 4px;
-        }
-
-        textarea {
-            width: 100%;
-            height: 150px;
-        }
-
-        ul {
-            background-color: #948e8b;
-            color: white;
-        }
-
-        .primary-button {
-            color: #948e8b;
-            background-color: #f5ce4f;
-        }
-
-        h4 {
-            text-align: center;
-        }
-
-        .header h1 {
-            font-family: myFont;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            font-size: 40px;
-            display: inline-block;
-        }
-
-        .navbar {
-            overflow: hidden;
-            background-color: rgb(87, 84, 84);
-            position: sticky;
-            position: -webkit-sticky;
-            top: 0;
-        }
-
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
-
-        .navbar a.right {
-            float: right;
-        }
-
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .navbar a.active {
-            background-color: #666;
-            color: white;
-        }
-
-        .header {
-            padding: 10px;
-            text-align: center;
-            background: #ffd801;
-            color: rgb(139, 136, 136);
-            font-size: 30px;
-            width: 100%;
-        }
-
-        #logo:hover {
-            width: 5%;
-            opacity: 0.3;
-        }
-
-        #logo {
-            width: 3%;
-            margin-left: 20px;
-            margin-top: 20px;
-        }
-
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #f89c1c;
-            color: rgb(139, 136, 136);
-            text-align: center;
-        }
-    </style>
     <!--<script src="../js/classQuestion.js"></script>
     <script src="../js/data.js"></script>
    <script src="../js/global.js"></script>
@@ -144,6 +31,7 @@
         <li class="w3-right"><a href="#" onclick="openTab('setQuestion')">שאלות</a></li>
         <li class="w3-right"><a href="#" onclick="openTab('setPlayersName')">שמות שחקנים</a></li>
         <li class="w3-right"><a href="#" onclick="openTab('setting')">הגדרות כלליות</a></li>
+        <li class="w3-right"><a href="#" onclick="openTab('getQuestions')">לבחירת שאלות ממאגר קיים</a></li>
         <li class="w3-right"><a href="#" onclick="fillArrary(); return false;">שמירה</a></li>
     </ul>
     <div id="tabs">
@@ -153,6 +41,18 @@
                 onclick="addQuestion(true)" />
             <div id="questionWrapper">
                 <form id="fillDataQuestion"></form>
+            </div>
+            <div>
+                <form id="questionnaireDetails" onsubmit="sendQuestionsToServer()">
+                    <p>כדי שהשאלות יישמרו במערכת אנא מלאי את הפרטים הבאים:</p>
+                    <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="שם המורה" />
+                    <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="מקצוע השאלות" />
+                    <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="נושא השאלות" />
+                    <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="כיתה" />
+                    <input type="submit" class="questionnaireDetailsInput" value="לשמירה" />
+                    <!-- <asp:HiddenField id="sendDataToServer" runat="server"/> -->
+                    <div id="hg"></div>
+                </form>
             </div>
         </div>
 
@@ -184,12 +84,31 @@
             <label>הודעה עבור תשובה שגויה</label>
             <input type="text" id="wrongAnswerMessage" save-as="wrongAnswerMessage" class="w3-input w3-border">
             <!-- <label>הודעה לבחירת מספר בין 1-4</label>
-            <input type="text" id="chooseNumberMessage" save-as="chooseNumberMessage" class="w3-input w3-border">
-            <label>הודעה כאשר תם הזמן</label> -->
+            <input type="text" id="chooseNumberMessage" save-as="chooseNumberMessage" class="w3-input w3-border"> -->
+            <label>הודעה כאשר תם הזמן</label>
             <input type="text" id="timeEndMessage" save-as="timeEndMessage" class="w3-input w3-border">
         </div>
     </div>
-
+    <div id="getQuestions" class="w3-container city">
+        <h2>חיפוש שאלות ממאגר השאלות</h2>
+        <div class="dropdown">
+            <button onclick="searchBySub()" class="dropbtn">לחיפוש לפי מקצוע</button>
+            <div id="myDropdown" class="dropdown-content">
+                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                <a href="#">About</a>
+                <a href="#">Base</a>
+                <a href="#">Blog</a>
+                <a href="#">Contact</a>
+                <a href="#">Custom</a>
+                <a href="#">Support</a>
+                <a href="#">Tools</a>
+            </div>
+        </div>
+        <!-- <form id="searchQuestions">
+            <input type="text" id="searchBySub" save-as="searchBySub" placeholder="לחיפוש לפי מקצוע" class="w3-input w3-border">
+            <input type="text" id="searchByClass" save-as="searchByClass" placeholder="לחיפוש לפי כיתה" class="w3-input w3-border">
+        </form> -->
+    </div>
 
 
 
@@ -205,12 +124,12 @@
         </div>
     </div>
     <div class="footer">
-        <p>Rivki & Racheli 2020 &copy;</p>
+        <p dir="ltr">Rivki & Racheli 2020 &copy;</p>
     </div>
     <script src="../data/data.js"></script>
     <script type="text/javascript" src="../scripts/setData.js"></script>
     <script src="../scripts/settings.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </body>
 
 </html>
