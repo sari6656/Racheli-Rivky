@@ -147,9 +147,13 @@ h4 {
 }
 
 #questionnaireDetails {
-    margin-right: 40%;
-    margin-bottom: 50px;
+    /*margin-right: 40%; */
+    /* margin-bottom: 50px; */
     display: inline-grid;
+    /* margin: auto; */
+    position: absolute;
+    left: 40%;
+    top: 30%;
 }
 
 .questionnaireDetailsInput {

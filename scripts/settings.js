@@ -232,7 +232,8 @@ function filterFunction() {
     }
 }
 function setInputValue() {
-    document.getElementById('myInput').value = event.target.innerText;
+    inputValue = document.getElementById('myInput');
+    inputValue.value = event.target.innerText;
     div = document.getElementById("myDropdown");
     a = div.getElementsByTagName("a");
     for (i = 0; i < a.length; i++) {
