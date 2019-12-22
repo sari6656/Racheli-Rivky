@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="questionnaireModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'questionnaire.dbo.Questions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="questionId" />
+      <PropertyRef Name="questionDesc" />
+      <PropertyRef Name="answer1" />
+      <PropertyRef Name="answer2" />
+      <PropertyRef Name="answer3" />
+      <PropertyRef Name="correctAnswer" />
+      <PropertyRef Name="questionnaire" />
+    </Key>
+    <Property Name="questionId" Type="int" Nullable="false" />
+    <Property Name="questionDesc" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="answer1" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="answer2" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="answer3" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="correctAnswer" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="questionnaire" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Teachers">
+    <Key>
+      <PropertyRef Name="questionnaire" />
+    </Key>
+    <Property Name="teacherId" Type="int" Nullable="false" />
+    <Property Name="teacherName" Type="nvarchar" MaxLength="30" />
+    <Property Name="subject" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="matter" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="class" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="questionnaire" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Questions_Teachers">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+    <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="questionnaire" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="questionnaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="questionnaireModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Questions].[questionId] AS [questionId], 
+    [Questions].[questionDesc] AS [questionDesc], 
+    [Questions].[answer1] AS [answer1], 
+    [Questions].[answer2] AS [answer2], 
+    [Questions].[answer3] AS [answer3], 
+    [Questions].[correctAnswer] AS [correctAnswer], 
+    [Questions].[questionnaire] AS [questionnaire]
+    FROM [dbo].[Questions] AS [Questions]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Questions_Teachers" Association="Self.FK_Questions_Teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
