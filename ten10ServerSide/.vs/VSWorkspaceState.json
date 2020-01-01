@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ten10ServerSide",
-    "\\ten10ServerSide\\Controllers"
+    "\\ten10ServerSide"
   ],
-  "SelectedNode": "\\ten10ServerSide.sln",
+  "SelectedNode": "\\ten10ServerSide\\Scripts",
   "PreviewInSolutionExplorer": false
 }
