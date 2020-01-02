@@ -2,11 +2,13 @@
 using System.Data.Entity;
 using System.Web.Http;
 using DAL;
-using System.Linq;
 
+using System.Linq;
+using BLL;
 
 namespace ten10ServerSide.Controllers
 {
+    [System.Web.Http.Cors.EnableCors(origins: "*", headers: "*", methods: "*")]
     public class QuestionsController : ApiController
     {
       
@@ -23,6 +25,12 @@ namespace ten10ServerSide.Controllers
             {
                 return entities.Teachers.FirstOrDefault(e=>e.questionnaire==id);
             }
+        }
+
+        [HttpPost]
+        public bool SaveQuestionsForTeacher(Teacher teacher)
+        {
+            return true;
         }
     }
 }
