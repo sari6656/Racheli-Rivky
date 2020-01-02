@@ -123,18 +123,59 @@ function fillArrary() {//onclick 'save'
     }
 
     dataObjForSave.questions = questionsToSave;
-    var dataForSaveString = JSON.stringify(dataObjForSave);
-    try {
-        localStorage.setItem('gameSetting', dataForSaveString);
-    } catch (error) {
-        console.log('error on reading from local storage')
-        console.log(error);
+
+    var teacher = {
+        TeacherName: $("#teacherName").val(),
+        Subject: $("#subject").val(),
+        Matter: $("#matter").val(),
+        Class: $("#classNumber").val(),
+        QuestionsList: []
     }
-    var dataString = 'var savedData = ' + dataForSaveString;
-    var encodedString = encodeURIComponent(dataString);
-    encodedString = btoa(encodedString);
-    var evalString = 'eval(decodeURIComponent(atob("' + encodedString + '")));';
-    //saveAlert(evalString);
+
+    for (let index = 0; index < questionsToSave.length; index++) {
+        const element = questionsToSave[index];
+        teacher.QuestionsList.push({
+            Description: element.question,
+            Answer1: element.answer1,
+            Answer2: element.answer2,
+            Answer3: element.answer3,
+            CorrectAnswer: element.correctAnswer
+        });
+        
+
+    }
+debugger;
+    $.ajax({
+        type: 'POST',
+        async: true,
+        data: JSON.stringify(teacher),
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        url: "http://localhost:58961/api/Questions/SaveQuestionsForTeacher",
+        success: function (result) {
+            if (result.d) {
+                debugger;
+            }
+            else {
+            }
+        },
+        error: function (arg1, arg2, arg3) {
+            debugger;
+        }
+    });
+
+    // var dataForSaveString = JSON.stringify(dataObjForSave);
+    // try {
+    //     localStorage.setItem('gameSetting', dataForSaveString);
+    // } catch (error) {
+    //     console.log('error on reading from local storage')
+    //     console.log(error);
+    // }
+    // var dataString = 'var savedData = ' + dataForSaveString;
+    // var encodedString = encodeURIComponent(dataString);
+    // encodedString = btoa(encodedString);
+    // var evalString = 'eval(decodeURIComponent(atob("' + encodedString + '")));';
+    // //saveAlert(evalString);
 }
 function openTab(tabName) {
     var i;
