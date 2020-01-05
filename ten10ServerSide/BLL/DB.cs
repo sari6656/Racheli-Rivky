@@ -33,7 +33,7 @@ namespace BLL
                         answer2 = item.Answer2,
                         answer3 = item.Answer3,
                         questionDesc = item.Description,
-                        correctAnswer = item.CorrectAnswer,
+                        correctAnswer = item.CorrectAnswer.ToString(),
                         questionnaire = nextQuestionnaireId
                     };
                     entities.Questions.Add(question);

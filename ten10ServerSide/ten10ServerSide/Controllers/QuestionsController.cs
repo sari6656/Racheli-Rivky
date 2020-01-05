@@ -11,7 +11,7 @@ namespace ten10ServerSide.Controllers
     [System.Web.Http.Cors.EnableCors(origins: "*", headers: "*", methods: "*")]
     public class QuestionsController : ApiController
     {
-      
+        DB db = new DB();
         public IEnumerable<Questions> Get()
         {
             using(questionnaireEntities entities = new questionnaireEntities())
@@ -29,9 +29,10 @@ namespace ten10ServerSide.Controllers
 
         [HttpPost]
         public bool SaveQuestionsForTeacher(Teacher teacher)
-        {
-            DB.SaveQuestionnaire(teacher);
+        {       
+            db.SaveQuestionnaire(teacher);
             return true;
+
         }
     }
 }
