@@ -470,3 +470,8 @@ C:\Users\user1\Documents\Racheli-Rivky-master\Racheli-Rivky-master\ten10ServerSi
 C:\Users\user1\Documents\Racheli-Rivky-master\Racheli-Rivky-master\ten10ServerSide\ten10ServerSide\bin\System.Web.Http.Cors.xml
 C:\Users\user1\Documents\Racheli-Rivky-master\Racheli-Rivky-master\ten10ServerSide\ten10ServerSide\bin\BLL.dll
 C:\Users\user1\Documents\Racheli-Rivky-master\Racheli-Rivky-master\ten10ServerSide\ten10ServerSide\bin\BLL.pdb
+C:\Users\rachetan\Racheli-Rivky\ten10ServerSide\ten10ServerSide\bin\BLL.dll
+C:\Users\rachetan\Racheli-Rivky\ten10ServerSide\ten10ServerSide\bin\System.Web.Cors.dll
+C:\Users\rachetan\Racheli-Rivky\ten10ServerSide\ten10ServerSide\bin\System.Web.Http.Cors.dll
+C:\Users\rachetan\Racheli-Rivky\ten10ServerSide\ten10ServerSide\bin\BLL.pdb
+C:\Users\rachetan\Racheli-Rivky\ten10ServerSide\ten10ServerSide\bin\System.Web.Http.Cors.xml

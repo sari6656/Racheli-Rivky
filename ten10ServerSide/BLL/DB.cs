@@ -28,14 +28,22 @@ namespace BLL
 
                 foreach (var item in teacher.QuestionsList)
                 {
-                    newTeacher.
+                    Questions question = new Questions{
+                        answer1 = item.Answer1,
+                        answer2 = item.Answer2,
+                        answer3 = item.Answer3,
+                        questionDesc = item.Description,
+                        correctAnswer = item.CorrectAnswer,
+                        questionnaire = nextQuestionnaireId
+                    };
+                    entities.Questions.Add(question);
                 }
 
                 entities.Teachers.Add(newTeacher);
 
                 
             }
-
+            return true;
         }
     }
 }

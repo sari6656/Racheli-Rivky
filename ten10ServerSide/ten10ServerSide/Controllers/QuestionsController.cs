@@ -30,6 +30,7 @@ namespace ten10ServerSide.Controllers
         [HttpPost]
         public bool SaveQuestionsForTeacher(Teacher teacher)
         {
+            DB.SaveQuestionnaire(teacher);
             return true;
         }
     }
