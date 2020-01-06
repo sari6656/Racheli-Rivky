@@ -34,5 +34,20 @@ namespace ten10ServerSide.Controllers
             return true;
 
         }
+        [HttpPost]
+        public List<string> GetSubjects(bool x)
+        {
+            return db.GetSubjectsFromTeachersTable();
+        }
+        [HttpPost]
+        public List<Teachers> GetListOfSubject(string subject)
+        {
+            return db.GetListOfSubjectFromTable(subject);
+        }
+        [HttpPost]
+        public List<Questions> GetQuestionsList(int questionaire)
+        {
+            return db.GetQuestionsListFromTable(questionaire);
+        }
     }
 }

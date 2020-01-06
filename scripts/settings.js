@@ -144,7 +144,6 @@ function fillArrary() {//onclick 'save'
         
 
     }
-debugger;
     $.ajax({
         type: 'POST',
         async: true,
@@ -255,6 +254,24 @@ function sendQuestionsToServer() {
 
 function searchBySub() {
     document.getElementById("myDropdown").classList.toggle("show");
+    
+    $.ajax({
+        type: 'POST',
+        async: true,
+        data: JSON.stringify(true),
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        url: "http://localhost:58961/api/Questions/GetSubjects",
+        success: function (result) {
+            if (result.d) {
+            }
+            else {
+            }
+        },
+        error: function (arg1, arg2, arg3) {
+            debugger;
+        }
+    });
 }
 
 function filterFunction() {
@@ -280,4 +297,23 @@ function setInputValue() {
     for (i = 0; i < a.length; i++) {
         a[i].style.display = "none";
     }
+    
+    $.ajax({
+        type: 'POST',
+        async: true,
+        data: JSON.stringify(inputValue.value),
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        url: "http://localhost:58961/api/Questions/GetListOfSubject",
+        success: function (result) {
+            if (result.d) {
+                debugger;
+            }
+            else {
+            }
+        },
+        error: function (arg1, arg2, arg3) {
+            debugger;
+        }
+    });
 }

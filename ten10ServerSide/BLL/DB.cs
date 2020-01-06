@@ -9,8 +9,18 @@ namespace BLL
     public class DB
     {
         questionnaireEntities entities = new questionnaireEntities();
-
-
+        public List<string> GetSubjectsFromTeachersTable()
+        {
+            return entities.Teachers.Select(s => s.subject).ToList();
+        }
+        public List<Teachers> GetListOfSubjectFromTable(string subject)
+        {
+            return entities.Teachers.Where(i => i.subject == subject).ToList();
+        }
+        public List<Questions> GetQuestionsListFromTable(int questionaire)
+        {
+            return entities.Questions.Where(y => y.questionnaire == questionaire).ToList();
+        }
         public bool SaveQuestionnaire(Teacher teacher)
         {
             //שאלון חדש
@@ -38,10 +48,14 @@ namespace BLL
                     };
                     entities.Questions.Add(question);
                 }
-
                 entities.Teachers.Add(newTeacher);
-
-                
+                try{
+                    entities.SaveChanges();
+                }
+                catch(Exception e)
+                {
+                throw e;
+                }
             }
             return true;
         }
