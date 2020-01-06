@@ -4,11 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e701edb55edc4921b16fd585df1f27ef" Name="Diagram1">
-        <EntityTypeShape EntityType="questionnaireModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="questionnaireModel.Teachers" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="questionnaireModel.Questions" Width="1.5" PointX="3.125" PointY="1.375" IsExpanded="true" />
-        <AssociationConnector Association="questionnaireModel.FK_Questions_Teachers" ManuallyRouted="false" />
+      <Diagram DiagramId="f315ab175a3649bcade3286c0ac985a1" Name="Diagram1">
+        <EntityTypeShape EntityType="questionsModel.Question" Width="1.5" PointX="2.375" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="questionsModel.Teacher" Width="1.5" PointX="4.5" PointY="1.25" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

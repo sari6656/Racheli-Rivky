@@ -25,8 +25,7 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Teachers> Teachers { get; set; }
-        public virtual DbSet<Questions> Questions { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<Teacher> Teachers { get; set; }
     }
 }

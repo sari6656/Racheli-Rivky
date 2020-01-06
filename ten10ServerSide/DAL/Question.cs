@@ -12,7 +12,7 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Questions
+    public partial class Question
     {
         public int questionId { get; set; }
         public string questionDesc { get; set; }
@@ -21,7 +21,5 @@ namespace DAL
         public string answer3 { get; set; }
         public string correctAnswer { get; set; }
         public int questionnaire { get; set; }
-    
-        public virtual Teachers Teachers { get; set; }
     }
 }

@@ -1,65 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="questionnaireModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
-  <EntityType Name="Teachers">
-    <Key>
-      <PropertyRef Name="questionnaire" />
-    </Key>
-    <Property Name="teacherId" Type="Int32" Nullable="false" />
-    <Property Name="teacherName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="subject" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="matter" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="class" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="questionnaire" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_Teachers" FromRole="Teachers" ToRole="Questions" />
-  </EntityType>
-  <EntityType Name="Questions">
+<Schema Namespace="questionsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Question">
     <Key>
       <PropertyRef Name="questionId" />
-      <PropertyRef Name="questionDesc" />
-      <PropertyRef Name="answer1" />
-      <PropertyRef Name="answer2" />
-      <PropertyRef Name="answer3" />
-      <PropertyRef Name="correctAnswer" />
-      <PropertyRef Name="questionnaire" />
     </Key>
-    <Property Name="questionId" Type="Int32" Nullable="false" />
+    <Property Name="questionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="questionDesc" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="answer1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="answer2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="answer3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="correctAnswer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="questionnaire" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Teachers" Relationship="Self.FK_Questions_Teachers" FromRole="Questions" ToRole="Teachers" />
   </EntityType>
-  <Association Name="FK_Questions_Teachers">
-    <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
-    <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Teachers">
-        <PropertyRef Name="questionnaire" />
-      </Principal>
-      <Dependent Role="Questions">
-        <PropertyRef Name="questionnaire" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="teacherId" />
+    </Key>
+    <Property Name="teacherId" Type="Int32" Nullable="false" />
+    <Property Name="teacherName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="subject" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="matter" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="class" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="questionnaire" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
   <EntityContainer Name="questionnaireEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="Teachers" EntityType="Self.Teachers" />
-    <EntitySet Name="Questions" EntityType="Self.Questions" />
-    <AssociationSet Name="FK_Questions_Teachers" Association="Self.FK_Questions_Teachers">
-      <End Role="Teachers" EntitySet="Teachers" />
-      <End Role="Questions" EntitySet="Questions" />
-    </AssociationSet>
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
   </EntityContainer>
 </Schema>

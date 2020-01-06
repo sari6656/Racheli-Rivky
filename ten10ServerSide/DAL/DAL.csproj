@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Questions.cs">
+    <Compile Include="Question.cs">
       <DependentUpon>questionsModal.tt</DependentUpon>
     </Compile>
     <Compile Include="questionsModal.Context.cs">
@@ -70,40 +70,35 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>questionsModal.edmx</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="Teacher.cs">
       <DependentUpon>questionsModal.tt</DependentUpon>
     </Compile>
-    <Compile Include="Teachers.cs">
-      <DependentUpon>questionsModal.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="questionsModal.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>questionsModal.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="questionsModal.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>questionsModal.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="questionsModal.edmx.diagram">
       <DependentUpon>questionsModal.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="questionsModal.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>questionsModal.Context.cs</LastGenOutput>
       <DependentUpon>questionsModal.edmx</DependentUpon>
+      <LastGenOutput>questionsModal.Context.cs</LastGenOutput>
     </Content>
     <Content Include="questionsModal.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>questionsModal.edmx</DependentUpon>
       <LastGenOutput>questionsModal.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

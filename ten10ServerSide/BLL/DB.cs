@@ -13,11 +13,11 @@ namespace BLL
         {
             return entities.Teachers.Select(s => s.subject).ToList();
         }
-        public List<Teachers> GetListOfSubjectFromTable(string subject)
+        public List<DAL.Teacher> GetListOfSubjectFromTable(string subject)
         {
             return entities.Teachers.Where(i => i.subject == subject).ToList();
         }
-        public List<Questions> GetQuestionsListFromTable(int questionaire)
+        public List<DAL.Question> GetQuestionsListFromTable(int questionaire)
         {
             return entities.Questions.Where(y => y.questionnaire == questionaire).ToList();
         }
@@ -26,8 +26,9 @@ namespace BLL
             //שאלון חדש
             if (teacher.Id == 0)
             {
-                int nextQuestionnaireId = entities.Teachers.Max(x => x.questionnaire) + 1;
-                Teachers newTeacher = new Teachers
+                int nextQuestionnaireId = 1;
+                //entities.Teachers.Max(x => x.questionnaire) + 1;
+                DAL.Teacher newTeacher = new DAL.Teacher
                 {
                     @class = teacher.Class,
                     matter = teacher.Matter,
@@ -38,7 +39,7 @@ namespace BLL
 
                 foreach (var item in teacher.QuestionsList)
                 {
-                    Questions question = new Questions{
+                    DAL.Question question = new DAL.Question{
                         answer1 = item.Answer1,
                         answer2 = item.Answer2,
                         answer3 = item.Answer3,

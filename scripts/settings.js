@@ -254,7 +254,7 @@ function sendQuestionsToServer() {
 
 function searchBySub() {
     document.getElementById("myDropdown").classList.toggle("show");
-    
+    debugger;
     $.ajax({
         type: 'POST',
         async: true,

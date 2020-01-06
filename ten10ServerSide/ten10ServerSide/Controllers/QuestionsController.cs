@@ -2,7 +2,6 @@
 using System.Data.Entity;
 using System.Web.Http;
 using DAL;
-
 using System.Linq;
 using BLL;
 
@@ -12,14 +11,14 @@ namespace ten10ServerSide.Controllers
     public class QuestionsController : ApiController
     {
         DB db = new DB();
-        public IEnumerable<Questions> Get()
+        public IEnumerable<DAL.Question> Get()
         {
             using(questionnaireEntities entities = new questionnaireEntities())
             {
                 return entities.Questions.ToList();
             }
         }
-        public Teachers Get(int id)
+        public DAL.Teacher Get(int id)
         {
             using (questionnaireEntities entities = new questionnaireEntities())
             {
@@ -28,7 +27,7 @@ namespace ten10ServerSide.Controllers
         }
 
         [HttpPost]
-        public bool SaveQuestionsForTeacher(Teacher teacher)
+        public bool SaveQuestionsForTeacher(BLL.Teacher teacher)
         {       
             db.SaveQuestionnaire(teacher);
             return true;
@@ -40,12 +39,12 @@ namespace ten10ServerSide.Controllers
             return db.GetSubjectsFromTeachersTable();
         }
         [HttpPost]
-        public List<Teachers> GetListOfSubject(string subject)
+        public List<DAL.Teacher> GetListOfSubject(string subject)
         {
             return db.GetListOfSubjectFromTable(subject);
         }
         [HttpPost]
-        public List<Questions> GetQuestionsList(int questionaire)
+        public List<DAL.Question> GetQuestionsList(int questionaire)
         {
             return db.GetQuestionsListFromTable(questionaire);
         }

@@ -12,12 +12,13 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class Teacher
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int teacherId { get; set; }
+        public string teacherName { get; set; }
+        public string subject { get; set; }
+        public string matter { get; set; }
+        public string @class { get; set; }
+        public int questionnaire { get; set; }
     }
 }
