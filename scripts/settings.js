@@ -274,13 +274,13 @@ function searchBySub() {
         }
     });
 }
-setDropDownValues(['אנגלית']);
-function setDropDownValues(subjectsArr) {    
-    var TmpSubjects = ['אנגלית', 'חשבון', 'דקדוק', 'טבע', 'לינארית','בוליאנית'];
+setDropDownValues([]);
+function setDropDownValues(subjectsArr) {
+    var TmpSubjects = ['אנגלית', 'חשבון', 'דקדוק', 'טבע', 'לינארית', 'בוליאנית'];
     var myDropDownList = document.getElementById("myDropdown");
-    for (var i = 0; i < TmpSubjects.length; i++) {        
+    for (var i = 0; i < TmpSubjects.length; i++) {
         var aTag = document.createElement('a');
-        aTag.onclick = function(){ setInputValue()};       
+        aTag.onclick = function () { setInputValue() };
         aTag.textContent = TmpSubjects[i];
         myDropDownList.appendChild(aTag);
     }
@@ -319,7 +319,7 @@ function setInputValue() {
         url: "http://localhost:58961/api/Questions/GetListOfSubject",
         success: function (result) {
             if (result.d) {
-                debugger;
+                resultTable(result.d);
             }
             else {
             }
@@ -328,4 +328,88 @@ function setInputValue() {
             debugger;
         }
     });
+    resultTable([]);
+    function resultTable(searcResult) {
+        tmpSearcResult = [{
+            teacherId: '1',
+            teacherName: 'רחלי טננולד',
+            subject: 'טבע',
+            matter: 'גוף האדם',
+            class: 'ו',
+            questionnaire: '20',
+        }, {
+            teacherId: '2',
+            teacherName: 'רבקי זלקינד',
+            subject: 'טבע',
+            matter: 'חשמל',
+            class: 'ד',
+            questionnaire: '22',
+        }, {
+            teacherId: '2',
+            teacherName: 'יטי ויזל',
+            subject: 'טבע',
+            matter: 'החלל',
+            class: 'יא',
+            questionnaire: '24',
+        }];
+        document.getElementById("searchResultTable").innerHTML = "";
+        var myTableDiv = document.getElementById("searchResultTable");
+
+        var table = document.createElement('TABLE');
+        table.border = '1';
+
+        var tableBody = document.createElement('TBODY');
+        table.appendChild(tableBody);
+
+        var tr = document.createElement('TR');
+        tableBody.appendChild(tr);
+
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode('שם מורה'));
+        td.className +="bold";
+        tr.appendChild(td);
+
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode('מקצוע'));
+        td.className +="bold";
+        tr.appendChild(td);
+
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode('נושא'));
+        td.className +="bold";
+        tr.appendChild(td);
+
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode('כיתה'));
+        td.className +="bold";
+        tr.appendChild(td);
+
+        for (var i = 0; i < tmpSearcResult.length; i++) {
+
+            var tr = document.createElement('TR');
+            tr.onclick = function () { getQuestions(tmpSearcResult[i].questionnaire) };
+            tableBody.appendChild(tr);
+
+            var td = document.createElement('TD');
+            td.appendChild(document.createTextNode(tmpSearcResult[i].teacherName));
+            tr.appendChild(td);
+
+            var td = document.createElement('TD');
+            td.appendChild(document.createTextNode(tmpSearcResult[i].subject));
+            tr.appendChild(td);
+
+            var td = document.createElement('TD');
+            td.appendChild(document.createTextNode(tmpSearcResult[i].matter));
+            tr.appendChild(td);
+
+            var td = document.createElement('TD');
+            td.appendChild(document.createTextNode(tmpSearcResult[i].class));
+            tr.appendChild(td);
+
+        }
+        myTableDiv.appendChild(table);
+
+    }
+
+
 }

@@ -217,3 +217,17 @@ h4 {
 .show {
     display: block;
 }
+#searchResultTable{
+    margin-top: 90px;
+    width: fit-content;
+    font-size: 25px;
+    color: black;
+}
+#searchResultTable td{
+    padding-right: 20px;
+    padding-left: 20px;
+
+}
+#searchResultTable .bold{
+    font-weight: bold;
+}
