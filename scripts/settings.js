@@ -141,7 +141,7 @@ function fillArrary() {//onclick 'save'
             Answer3: element.answer3,
             CorrectAnswer: element.correctAnswer
         });
-        
+
 
     }
     $.ajax({
@@ -264,6 +264,7 @@ function searchBySub() {
         url: "http://localhost:58961/api/Questions/GetSubjects",
         success: function (result) {
             if (result.d) {
+                setDropDownValues(result.d);
             }
             else {
             }
@@ -272,6 +273,17 @@ function searchBySub() {
             debugger;
         }
     });
+}
+setDropDownValues(['אנגלית']);
+function setDropDownValues(subjectsArr) {    
+    var TmpSubjects = ['אנגלית', 'חשבון', 'דקדוק', 'טבע', 'לינארית','בוליאנית'];
+    var myDropDownList = document.getElementById("myDropdown");
+    for (var i = 0; i < TmpSubjects.length; i++) {        
+        var aTag = document.createElement('a');
+        aTag.onclick = function(){ setInputValue()};       
+        aTag.textContent = TmpSubjects[i];
+        myDropDownList.appendChild(aTag);
+    }
 }
 
 function filterFunction() {
@@ -297,7 +309,7 @@ function setInputValue() {
     for (i = 0; i < a.length; i++) {
         a[i].style.display = "none";
     }
-    
+
     $.ajax({
         type: 'POST',
         async: true,
