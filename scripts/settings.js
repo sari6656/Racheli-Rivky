@@ -163,18 +163,18 @@ function fillArrary() {//onclick 'save'
         }
     });
 
-    // var dataForSaveString = JSON.stringify(dataObjForSave);
-    // try {
-    //     localStorage.setItem('gameSetting', dataForSaveString);
-    // } catch (error) {
-    //     console.log('error on reading from local storage')
-    //     console.log(error);
-    // }
-    // var dataString = 'var savedData = ' + dataForSaveString;
-    // var encodedString = encodeURIComponent(dataString);
-    // encodedString = btoa(encodedString);
-    // var evalString = 'eval(decodeURIComponent(atob("' + encodedString + '")));';
-    // //saveAlert(evalString);
+    //     var dataForSaveString = JSON.stringify(dataObjForSave);
+    //    try {
+    //        localStorage.setItem('gameSetting', dataForSaveString);
+    //   } catch (error) {
+    //      console.log('error on reading from local storage')
+    //      console.log(error);
+    //   }
+    //   var dataString = 'var savedData = ' + dataForSaveString;
+    //   var encodedString = encodeURIComponent(dataString);
+    //   encodedString = btoa(encodedString);
+    //   var evalString = 'eval(decodeURIComponent(atob("' + encodedString + '")));';
+    //  saveAlert(evalString);
 }
 function openTab(tabName) {
     var i;
@@ -182,8 +182,18 @@ function openTab(tabName) {
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
     }
-    document.getElementById(tabName).style.display = "block";
+    var y = document.getElementsByTagName('li');
+    for (i = 0; i < y.length; i++) {
+       if (y[i].classList.contains("selectedTab"))
+            y[i].classList.remove("selectedTab");
+    }
+
+
+document.getElementById(tabName).style.display = "block";
+document.getElementsByClassName(tabName)[0].classList.add("selectedTab");
+
 }
+
 function onLoad() {
     fillDivs()
     if (document.getElementsByClassName("city").length)
@@ -273,10 +283,11 @@ function searchBySub() {
             debugger;
         }
     });
-}
-setDropDownValues([]);
-function setDropDownValues(subjectsArr) {
     var TmpSubjects = ['אנגלית', 'חשבון', 'דקדוק', 'טבע', 'לינארית', 'בוליאנית'];
+    setDropDownValues(TmpSubjects);
+}
+
+function setDropDownValues(TmpSubjects) {
     var myDropDownList = document.getElementById("myDropdown");
     for (var i = 0; i < TmpSubjects.length; i++) {
         var aTag = document.createElement('a');
@@ -328,88 +339,184 @@ function setInputValue() {
             debugger;
         }
     });
-    resultTable([]);
-    function resultTable(searcResult) {
-        tmpSearcResult = [{
-            teacherId: '1',
-            teacherName: 'רחלי טננולד',
-            subject: 'טבע',
-            matter: 'גוף האדם',
-            class: 'ו',
-            questionnaire: '20',
-        }, {
-            teacherId: '2',
-            teacherName: 'רבקי זלקינד',
-            subject: 'טבע',
-            matter: 'חשמל',
-            class: 'ד',
-            questionnaire: '22',
-        }, {
-            teacherId: '2',
-            teacherName: 'יטי ויזל',
-            subject: 'טבע',
-            matter: 'החלל',
-            class: 'יא',
-            questionnaire: '24',
-        }];
-        document.getElementById("searchResultTable").innerHTML = "";
-        var myTableDiv = document.getElementById("searchResultTable");
+    tmpSearcResult = [{
+        teacherId: '1',
+        teacherName: 'רחלי טננולד',
+        subject: 'טבע',
+        matter: 'גוף האדם',
+        class: 'ו',
+        questionnaire: '20',
+    }, {
+        teacherId: '2',
+        teacherName: 'רבקי זלקינד',
+        subject: 'טבע',
+        matter: 'חשמל',
+        class: 'ד',
+        questionnaire: '22',
+    }, {
+        teacherId: '2',
+        teacherName: 'יטי ויזל',
+        subject: 'טבע',
+        matter: 'החלל',
+        class: 'יא',
+        questionnaire: '24',
+    }];
+    resultTable(tmpSearcResult);
+}
 
-        var table = document.createElement('TABLE');
-        table.border = '1';
+function resultTable(tmpSearcResult) {
 
-        var tableBody = document.createElement('TBODY');
-        table.appendChild(tableBody);
+    document.getElementById("searchResultTable").innerHTML = "";
+    var myTableDiv = document.getElementById("searchResultTable");
+
+    var table = document.createElement('TABLE');
+    table.border = '1';
+
+    var tableBody = document.createElement('TBODY');
+    table.appendChild(tableBody);
+
+    var tr = document.createElement('TR');
+    tr.className += "no-border";
+    tableBody.appendChild(tr);
+
+    var td = document.createElement('TD');
+    td.appendChild(document.createTextNode('שם מורה'));
+    td.className += "bold";
+    tr.appendChild(td);
+
+    var td = document.createElement('TD');
+    td.appendChild(document.createTextNode('מקצוע'));
+    td.className += "bold";
+    tr.appendChild(td);
+
+    var td = document.createElement('TD');
+    td.appendChild(document.createTextNode('נושא'));
+    td.className += "bold";
+    tr.appendChild(td);
+
+    var td = document.createElement('TD');
+    td.appendChild(document.createTextNode('כיתה'));
+    td.className += "bold";
+    tr.appendChild(td);
+
+    for (var i = 0; i < tmpSearcResult.length; i++) {
 
         var tr = document.createElement('TR');
+        var questionnaireId = tmpSearcResult[i].questionnaire;
+        tr.onclick = function () { getQuestions(questionnaireId) };
         tableBody.appendChild(tr);
 
         var td = document.createElement('TD');
-        td.appendChild(document.createTextNode('שם מורה'));
-        td.className +="bold";
+        td.appendChild(document.createTextNode(tmpSearcResult[i].teacherName));
         tr.appendChild(td);
 
         var td = document.createElement('TD');
-        td.appendChild(document.createTextNode('מקצוע'));
-        td.className +="bold";
+        td.appendChild(document.createTextNode(tmpSearcResult[i].subject));
         tr.appendChild(td);
 
         var td = document.createElement('TD');
-        td.appendChild(document.createTextNode('נושא'));
-        td.className +="bold";
+        td.appendChild(document.createTextNode(tmpSearcResult[i].matter));
         tr.appendChild(td);
 
         var td = document.createElement('TD');
-        td.appendChild(document.createTextNode('כיתה'));
-        td.className +="bold";
+        td.appendChild(document.createTextNode(tmpSearcResult[i].class));
         tr.appendChild(td);
-
-        for (var i = 0; i < tmpSearcResult.length; i++) {
-
-            var tr = document.createElement('TR');
-            tr.onclick = function () { getQuestions(tmpSearcResult[i].questionnaire) };
-            tableBody.appendChild(tr);
-
-            var td = document.createElement('TD');
-            td.appendChild(document.createTextNode(tmpSearcResult[i].teacherName));
-            tr.appendChild(td);
-
-            var td = document.createElement('TD');
-            td.appendChild(document.createTextNode(tmpSearcResult[i].subject));
-            tr.appendChild(td);
-
-            var td = document.createElement('TD');
-            td.appendChild(document.createTextNode(tmpSearcResult[i].matter));
-            tr.appendChild(td);
-
-            var td = document.createElement('TD');
-            td.appendChild(document.createTextNode(tmpSearcResult[i].class));
-            tr.appendChild(td);
-
-        }
-        myTableDiv.appendChild(table);
 
     }
-
+    myTableDiv.appendChild(table);
 
 }
+
+function getQuestions(questionnaireNum) {
+    //ajacs call to fetch all question wich questionnaire == questionnaireNum;
+    //success putQuestionsInInput(response.d);
+    var tmpQuestion = [{
+        questionId: 1,
+        questionDesc: 'מי ששכח על הניסים במודים',
+        answer1: 'אומר לפני שעוקר רגליו',
+        answer2: 'חוזר למודים',
+        answer3: 'אינו חוזר',
+        correctAnswer: 1,
+        questionnaire: 12,
+
+    }, {
+        questionId: 2,
+        questionDesc: 'כמה ימים דלק השמן בחנוכה',
+        answer1: 'חודש',
+        answer2: 'שבוע ויום',
+        answer3: 'שישה ימים',
+        correctAnswer: 2,
+        questionnaire: 12,
+
+    }, {
+        questionId: 3,
+        questionDesc: 'מי ששכח על הניסים בברכת המזון',
+        answer1: 'חוזר לראש',
+        answer2: 'אומר בהרחמן',
+        answer3: 'אינו חוזר',
+        correctAnswer: 2,
+        questionnaire: 12,
+
+    }];
+    putQuestionsInInput(tmpQuestion);
+}
+
+function putQuestionsInInput(tmpQuestion) {
+
+    document.getElementById('fillDataQuestion').innerHTML = "";
+    for (var q = 0; q < tmpQuestion.length; q++) {
+        var para = document.createElement('div');
+        var label = document.createElement('label');
+
+        label.innerHTML = 'שאלה';
+        para.appendChild(label);
+
+        var input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.setAttribute('value', tmpQuestion[q].questionDesc);
+        para.appendChild(input);
+        //the answers
+        for (var i = 1; i <= 3; i++) {
+            label = document.createElement('label');
+            label.innerHTML = 'תשובה' + i;
+            para.appendChild(label);
+
+            input = document.createElement('input');
+            input.setAttribute('type', 'text');
+            input.setAttribute('value', tmpQuestion[q]['answer' + i]);
+            input.setAttribute('require', 'require');
+            para.appendChild(input);
+        }
+        //the correct answer
+        label = document.createElement('label');
+        label.innerHTML = 'מס תשובה נכונה';
+        para.appendChild(label);
+
+        input = document.createElement('input');
+        input.setAttribute('type', 'number');
+        input.setAttribute('max', '3');
+        input.setAttribute('min', '1');
+        input.setAttribute('value', tmpQuestion[q].correctAnswer);
+        input.setAttribute('require', 'require');
+
+        para.classList.add("question-card");
+        para.appendChild(input);
+
+        //the button 'remove question'
+        input = document.createElement('input');
+        input.setAttribute('type', 'button');
+        input.setAttribute('value', 'הסר שאלה');
+        input.addEventListener("click", function () { removeQuestion(event); })
+        para.appendChild(input);
+
+        //document.querySelector("#fillDataQuestion").prepend(para);
+
+        // document.querySelector("#fillDataQuestion").appendChild(para);
+        document.getElementById('fillDataQuestion').appendChild(para);
+
+    }
+    openTab('setQuestion');
+
+}
+
+

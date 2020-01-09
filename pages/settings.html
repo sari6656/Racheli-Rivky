@@ -26,21 +26,24 @@
         <a href="./instructions.html" class="right" id="instructions">הוראות</a>
     </div>
     <ul class="w3-navbar">
-        <li class="w3-right"><a class="primary-button" href="../index.html">חזרה</a></li>
-        <li class="w3-right"><a href="#" onclick="openTab('setQuestion')">שאלות</a></li>
-        <li class="w3-right"><a href="#" onclick="openTab('setPlayersName')">שמות שחקנים</a></li>
-        <li class="w3-right"><a href="#" onclick="openTab('setting')">הגדרות כלליות</a></li>
-        <li class="w3-right"><a href="#" onclick="openTab('getQuestions')">לבחירת שאלות ממאגר קיים</a></li>
-        <li class="w3-right"><a href="#" onclick="openTab('save')">שמירה</a></li>
+        <li class="w3-right"><a class="primary-button" href="../index.html">חזרה</a></li>       
+        <li class="w3-right setPlayersName"><a href="#" onclick="openTab('setPlayersName')">שמות שחקנים</a></li>
+        <li class="w3-right setting"><a href="#" onclick="openTab('setting')">הגדרות כלליות</a></li>
+        <li class="w3-right getQuestions"><a href="#" onclick="openTab('getQuestions')">לבחירת שאלות ממאגר קיים</a></li>
+        <li class="w3-right setQuestion selectedTab"><a href="#" onclick="openTab('setQuestion')">שאלות</a></li>
+        <li class="w3-right save"><a href="#" onclick="openTab('save')">שמירה</a></li>
     </ul>
     <div id="tabs">
         <div id="setQuestion" class="w3-container city">
             <h2>עריכת שאלות</h2>
             <input type="button" class="w3-btn primary-button" value="הוסף שאלה" id="addQuestionButton"
                 onclick="addQuestion(true)" />
+                <input type="button" class="w3-btn primary-button savaQ" value="שמירת שאלון" 
+                onclick="openTab('save')" />
             <div id="questionWrapper">
                 <form id="fillDataQuestion"></form>
             </div>
+            
         </div>
 
         <div id="setPlayersName" class="w3-container city">

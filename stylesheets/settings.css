@@ -223,6 +223,11 @@ h4 {
     font-size: 25px;
     color: black;
 }
+#searchResultTable tr{
+    border: 1px solid #eeb42e;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
 #searchResultTable td{
     padding-right: 20px;
     padding-left: 20px;
@@ -230,4 +235,12 @@ h4 {
 }
 #searchResultTable .bold{
     font-weight: bold;
+}
+
+#searchResultTable .no-border{
+   cursor: default;
+   border: none;
+}
+.selectedTab{
+    background-color: #cccccc;
 }
