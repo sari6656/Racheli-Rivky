@@ -83,10 +83,10 @@
     <div id="save" class="w3-container city">
         <form id="questionnaireDetails" onsubmit="sendQuestionsToServer()">
             <b>כדי שהשאלות יישמרו במערכת אנא מלאי את הפרטים הבאים:</b>
-            <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="שם המורה" />
-            <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="מקצוע השאלות" />
-            <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="נושא השאלות" />
-            <input type="text" class="questionnaireDetailsInput dataToServer" placeholder="כיתה" />
+            <input type="text" class="questionnaireDetailsInput dataToServer" id="teacherName" placeholder="שם המורה" />
+            <input type="text" class="questionnaireDetailsInput dataToServer" id="subject" placeholder="מקצוע השאלות" />
+            <input type="text" class="questionnaireDetailsInput dataToServer" id="matter" placeholder="נושא השאלות" />
+            <input type="text" class="questionnaireDetailsInput dataToServer" id="classNumber" placeholder="כיתה" />
             <input type="submit" class="questionnaireDetailsInput" value="לשמירה" />
             <!-- <asp:HiddenField id="sendDataToServer" runat="server"/> -->
         </form>

@@ -31,3 +31,17 @@ C:\Users\User\Desktop\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.csproj.Cor
 C:\Users\User\Desktop\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\User\Desktop\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.dll
 C:\Users\User\Desktop\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.pdb
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\BLL.dll
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\BLL.pdb
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\DAL.dll
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\EntityFramework.dll
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\DAL.pdb
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\DAL.dll.config
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\EntityFramework.xml
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.dll
+D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.pdb

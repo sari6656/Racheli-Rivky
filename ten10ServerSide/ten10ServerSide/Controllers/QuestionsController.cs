@@ -27,7 +27,7 @@ namespace ten10ServerSide.Controllers
         }
 
         [HttpPost]
-        public bool SaveQuestionsForTeacher(BLL.Teacher teacher)
+        public bool SaveQuestionsForTeacher([FromBody]BLL.Teacher teacher)
         {       
             db.SaveQuestionnaire(teacher);
             return true;
