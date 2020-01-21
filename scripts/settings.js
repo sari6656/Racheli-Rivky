@@ -266,9 +266,9 @@ function searchBySub() {
     document.getElementById("myDropdown").classList.toggle("show");
     debugger;
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         async: true,
-        data: JSON.stringify(true),
+        data: {},
         contentType: 'application/json; charset=utf-8',
         dataType: "json",
         url: "http://localhost:58961/api/Questions/GetSubjects",

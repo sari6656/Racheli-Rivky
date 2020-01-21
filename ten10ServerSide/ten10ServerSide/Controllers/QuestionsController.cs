@@ -33,8 +33,9 @@ namespace ten10ServerSide.Controllers
             return true;
 
         }
-        [HttpPost]
-        public List<string> GetSubjects(bool x)
+        [Route("api/Questions/GetSubjects")]
+        [HttpGet]
+        public List<string> GetSubjects()
         {
             return db.GetSubjectsFromTeachersTable();
         }
