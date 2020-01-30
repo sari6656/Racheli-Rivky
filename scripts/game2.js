@@ -1,4 +1,4 @@
-﻿
+﻿var data = JSON.parse(localStorage.data);
 var games=0;
 var time;
 var bonusOrNumber = [ "number", "number", "number", "number","number", "number","number","קבל 2 מהיריב", "השלם ל-10", "השלם ל-10"];
@@ -8,7 +8,8 @@ var players = [
     { name: data.player1Name, num: 1, color: "orange", bee: "../resources/images/תמונות לפרויקט/דבורה 1.png", points: 0, wins: 0, element: document.querySelector('.player1_section')},
 { name: data.player2Name, num: 2, color: "yellow", bee: "../resources/images/תמונות לפרויקט/דבורה 2.png", points: 0, wins: 0, element: document.querySelector('.player2_section')}
 ];
-var questions = data.questions;
+
+var questions = JSON.parse(localStorage.questions);
 var lengthQestion = questions.length;
 var currentPlayerIndex = 0;
 var currentPlayer = players[currentPlayerIndex];

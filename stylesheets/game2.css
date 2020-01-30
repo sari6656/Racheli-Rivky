@@ -510,7 +510,7 @@ input[type="radio"]:not(:checked)+label use.radio-use {
 .form__label {
     color: black;
     display: flex;
-    max-width: 200px;
+    /*max-width: 200px;*/
     align-items: center;
     font-size: 1.5rem;
 }

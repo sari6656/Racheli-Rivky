@@ -519,4 +519,60 @@ function putQuestionsInInput(tmpQuestion) {
 
 }
 
+function startGame(){
+    var questionsToSave = [];
+    var divInForm = document.getElementsByClassName("question-card")// document.getElementsByTagName("div");
+    var inputInDiv;
+    for (var i = 0; i < divInForm.length; i++) {
+        inputInDiv = divInForm[i].getElementsByTagName("input");
+        var question = {};
+        question.question = inputInDiv[0].value;
+        question.answer1 = inputInDiv[1].value;
+        question.answer2 = inputInDiv[2].value;
+        question.answer3 = inputInDiv[3].value;
+        question.correctAnswer = inputInDiv[4].value;
+        if (question.correctAnswer < 1 || question.correctAnswer > 3
+            || !question.question
+            || !question.answer1
+            || !question.answer2
+            || !question.answer3
+            || !question.correctAnswer) {
+            alert("שימי לב! הערכים עבור שאלה מספר:" + (i + 1) + " אינם תקינים");
+            return;
+        } else {
+            questionsToSave.push(question);
+        }
+    }
+    
+    var dataObjForSave = {};
+    dataObjForSave.date = new Date();
+    var generalSettings = '';
+    var generalSettingsInputs = document.querySelectorAll('[save-as]');
+    for (var i = 0; i < generalSettingsInputs.length; i++) {    
+        var input = generalSettingsInputs[i];      
+        var inputValue = input.value;
+         if(!inputValue) {
+            alert("על כל השדות להיות מלאים לפני תחילת משחק");
+            return;
+        } 
+        else if (inputValue === '0' && input.min != '0') {
+            alert("הערך 0 לא חוקי עבור שמות שחקנים והגדרות כלליות");
+            return;
+        }
+
+        //TODO add validation
+        dataObjForSave[input.getAttribute('save-as')] = inputValue;
+        
+    }
+    localStorage.questions = JSON.stringify(questionsToSave);
+    //window.data = dataObjForSave;
+    localStorage.data = JSON.stringify(dataObjForSave);
+    console.log("localStorage.data:  "+localStorage.data);
+    console.log("localStorage.questions:  "+localStorage.questions)
+    var url = window.location.href;
+    var newurl = url.split('/').slice(0,-1).join('/')+'/bord.html';    
+    window.location.assign(newurl);
+}
+
+
 
