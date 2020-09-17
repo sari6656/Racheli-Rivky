@@ -57,3 +57,35 @@ D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\DAL\obj\Debug\DAL.csp
 D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\DAL\obj\Debug\DAL.dll
 D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\DAL\obj\Debug\DAL.pdb
+E:\Racheli-Rivky\ten10ServerSide\DAL\bin\Debug\DAL.dll.config
+E:\Racheli-Rivky\ten10ServerSide\DAL\bin\Debug\DAL.dll
+E:\Racheli-Rivky\ten10ServerSide\DAL\bin\Debug\DAL.pdb
+E:\Racheli-Rivky\ten10ServerSide\DAL\bin\Debug\EntityFramework.dll
+E:\Racheli-Rivky\ten10ServerSide\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Racheli-Rivky\ten10ServerSide\DAL\bin\Debug\EntityFramework.xml
+E:\Racheli-Rivky\ten10ServerSide\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Racheli-Rivky\ten10ServerSide\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+E:\Racheli-Rivky\ten10ServerSide\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\Racheli-Rivky\ten10ServerSide\DAL\obj\Debug\DAL.dll
+E:\Racheli-Rivky\ten10ServerSide\DAL\obj\Debug\DAL.pdb
+E:\ten10ServerSide\DAL\bin\Debug\DAL.dll.config
+E:\ten10ServerSide\DAL\bin\Debug\DAL.dll
+E:\ten10ServerSide\DAL\bin\Debug\DAL.pdb
+E:\ten10ServerSide\DAL\bin\Debug\EntityFramework.dll
+E:\ten10ServerSide\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\ten10ServerSide\DAL\bin\Debug\EntityFramework.xml
+E:\ten10ServerSide\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\ten10ServerSide\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\ten10ServerSide\DAL\obj\Debug\DAL.dll
+E:\ten10ServerSide\DAL\obj\Debug\DAL.pdb
+E:\TRY\ten10ServerSide\DAL\bin\Debug\DAL.dll.config
+E:\TRY\ten10ServerSide\DAL\bin\Debug\DAL.dll
+E:\TRY\ten10ServerSide\DAL\bin\Debug\DAL.pdb
+E:\TRY\ten10ServerSide\DAL\bin\Debug\EntityFramework.dll
+E:\TRY\ten10ServerSide\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\TRY\ten10ServerSide\DAL\bin\Debug\EntityFramework.xml
+E:\TRY\ten10ServerSide\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\TRY\ten10ServerSide\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+E:\TRY\ten10ServerSide\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\TRY\ten10ServerSide\DAL\obj\Debug\DAL.dll
+E:\TRY\ten10ServerSide\DAL\obj\Debug\DAL.pdb

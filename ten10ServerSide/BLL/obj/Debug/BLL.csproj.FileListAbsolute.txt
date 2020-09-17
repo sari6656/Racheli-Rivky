@@ -45,3 +45,42 @@ D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.csp
 D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.csproj.CopyComplete
 D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.dll
 D:\racheli and rivki project\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.pdb
+E:\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\BLL.dll
+E:\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\BLL.pdb
+E:\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\DAL.dll
+E:\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\EntityFramework.dll
+E:\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\DAL.pdb
+E:\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\DAL.dll.config
+E:\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\EntityFramework.xml
+E:\Racheli-Rivky\ten10ServerSide\BLL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+E:\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.csproj.CopyComplete
+E:\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.dll
+E:\Racheli-Rivky\ten10ServerSide\BLL\obj\Debug\BLL.pdb
+E:\ten10ServerSide\BLL\bin\Debug\BLL.dll
+E:\ten10ServerSide\BLL\bin\Debug\BLL.pdb
+E:\ten10ServerSide\BLL\bin\Debug\DAL.dll
+E:\ten10ServerSide\BLL\bin\Debug\EntityFramework.dll
+E:\ten10ServerSide\BLL\bin\Debug\EntityFramework.SqlServer.dll
+E:\ten10ServerSide\BLL\bin\Debug\DAL.pdb
+E:\ten10ServerSide\BLL\bin\Debug\DAL.dll.config
+E:\ten10ServerSide\BLL\bin\Debug\EntityFramework.xml
+E:\ten10ServerSide\BLL\bin\Debug\EntityFramework.SqlServer.xml
+E:\ten10ServerSide\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+E:\ten10ServerSide\BLL\obj\Debug\BLL.csproj.CopyComplete
+E:\ten10ServerSide\BLL\obj\Debug\BLL.dll
+E:\ten10ServerSide\BLL\obj\Debug\BLL.pdb
+E:\TRY\ten10ServerSide\BLL\bin\Debug\BLL.dll
+E:\TRY\ten10ServerSide\BLL\bin\Debug\BLL.pdb
+E:\TRY\ten10ServerSide\BLL\bin\Debug\DAL.dll
+E:\TRY\ten10ServerSide\BLL\bin\Debug\EntityFramework.dll
+E:\TRY\ten10ServerSide\BLL\bin\Debug\EntityFramework.SqlServer.dll
+E:\TRY\ten10ServerSide\BLL\bin\Debug\DAL.pdb
+E:\TRY\ten10ServerSide\BLL\bin\Debug\DAL.dll.config
+E:\TRY\ten10ServerSide\BLL\bin\Debug\EntityFramework.xml
+E:\TRY\ten10ServerSide\BLL\bin\Debug\EntityFramework.SqlServer.xml
+E:\TRY\ten10ServerSide\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+E:\TRY\ten10ServerSide\BLL\obj\Debug\BLL.csproj.CopyComplete
+E:\TRY\ten10ServerSide\BLL\obj\Debug\BLL.dll
+E:\TRY\ten10ServerSide\BLL\obj\Debug\BLL.pdb

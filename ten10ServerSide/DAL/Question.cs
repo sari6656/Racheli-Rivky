@@ -21,5 +21,7 @@ namespace DAL
         public string answer3 { get; set; }
         public string correctAnswer { get; set; }
         public int questionnaire { get; set; }
+    
+        public virtual Teacher Teacher { get; set; }
     }
 }

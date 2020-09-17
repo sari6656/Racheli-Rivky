@@ -8,9 +8,9 @@
 
 
     <!--<script src="../js/classQuestion.js"></script>
-    <script src="../js/data.js"></script>
-   <script src="../js/global.js"></script>
-    <script src="../js/initQuestion.js"></script>-->
+     <script src="../js/data.js"></script>
+    <script src="../js/global.js"></script>
+     <script src="../js/initQuestion.js"></script>-->
 
 
 </head>
@@ -18,7 +18,9 @@
 <body onload="onLoad()">
     <div class="header">
         <img id="logo" src="../resources/images/תמונות לפרויקט/logo2.png">
+
     </div>
+    <div class="notify"><span id="notifyType" class=""></span></div>
     <div class="navbar">
         <a href="../index.html" class="active" id="home">בית</a>
         <a href="./bord.html" id="play">משחק</a>
@@ -26,7 +28,7 @@
         <a href="./instructions.html" class="right" id="instructions">הוראות</a>
     </div>
     <ul class="w3-navbar">
-        <li class="w3-right"><a class="primary-button" href="../index.html">חזרה</a></li>       
+        <li class="w3-right"><a class="primary-button" href="../index.html">חזרה</a></li>
         <li class="w3-right setPlayersName"><a href="#" onclick="openTab('setPlayersName')">שמות שחקנים</a></li>
         <li class="w3-right setting"><a href="#" onclick="openTab('setting')">הגדרות כלליות</a></li>
         <li class="w3-right getQuestions"><a href="#" onclick="openTab('getQuestions')">לבחירת שאלות ממאגר קיים</a></li>
@@ -37,15 +39,16 @@
         <div id="setQuestion" class="w3-container city">
             <h2>עריכת שאלות</h2>
             <input type="button" class="w3-btn primary-button" value="הוסף שאלה" id="addQuestionButton"
-                onclick="addQuestion(true)" />
-                <input type="button" class="w3-btn primary-button savaQ" value="שמירת שאלון" 
-                onclick="openTab('save')" />
-                <input type="button" class="w3-btn primary-button savaQ" value="התחל משחק עם שאלות שבדף זה" 
-                onclick="startGame()" />
-            <div  id="questionWrapper"><!--save-as="questions"-->
+                   onclick="addQuestion(true)" />
+            <input type="button" class="w3-btn primary-button savaQ" value="שמירת שאלון"
+                   onclick="openTab('save')" />
+            <input type="button" class="w3-btn primary-button savaQ" value="התחל משחק עם שאלות שבדף זה"
+                   onclick="startGame()" />
+            <div id="questionWrapper">
+                <!--save-as="questions"-->
                 <form id="fillDataQuestion"></form>
             </div>
-            
+
         </div>
 
         <div id="setPlayersName" class="w3-container city">
@@ -64,7 +67,7 @@
             <input type="number" min="1" id="questionTimer" save-as="questionTimer" class="w3-input w3-border">
             <label>זמן להצגת הודעה (בשניות)</label>
             <input type="number" min="1" id="showMessageDuration" save-as="showMessageDuration"
-                class="w3-input w3-border">
+                   class="w3-input w3-border">
             <label>מספר נקודות מינימום</label>
             <input type="number" min="0" id="minPoints" save-as="minPoints" class="w3-input w3-border">
             <label>מספר נקודות מקסימום</label>
@@ -97,7 +100,7 @@
         <div class="w3-modal-content">
             <div class="w3-container">
                 <span onclick="document.getElementById('msgAlert').style.display='none'"
-                    class="w3-closebtn">&times;</span>
+                      class="w3-closebtn">&times;</span>
                 <button onclick="copyToClip(document.getElementById('msgp').innerHTML)"> העתק </button>
                 <h4> ושמרי data/data.js :העתיקי את הטקסט שמתחת, לקובץ הבא</h4>
                 <textarea id="msgp" style="text-align:center;">Some text. Some text. Some text.</textarea>
@@ -110,7 +113,7 @@
             <button onclick="searchBySub()" class="dropbtn">לחיפוש לפי מקצוע</button>
             <div id="myDropdown" class="dropdown-content">
                 <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-               
+
             </div>
         </div>
         <div id="searchResultTable">

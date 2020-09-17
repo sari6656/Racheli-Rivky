@@ -102,7 +102,7 @@ h1 {
 .header {
     padding: 10px;
     text-align: left;
-    background: #ffd801;
+    background: #fcd804;
     color: rgb(139, 136, 136);
     font-size: 30px;
     width: 100%;
@@ -134,7 +134,7 @@ h1 {
 #toHome {
     width: 66px;
     height: 66px;
-    /* z-index: -36; */
+    z-index: 7; 
     top: 41px;
     position: absolute;
     left: 32px;

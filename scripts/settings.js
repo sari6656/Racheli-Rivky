@@ -31,7 +31,7 @@ function addQuestion(addFirst) {//make the tamplate
     input.setAttribute('type', 'number');
     input.setAttribute('max', '3');
     input.setAttribute('min', '1');
-    input.setAttribute('placeholder', ' 1-3');
+    input.setAttribute('placeholder', '1-3');
     input.setAttribute('require', 'require');
 
     para.classList.add("question-card");
@@ -79,6 +79,7 @@ function fillDivs() {//on click 'view the questions'
 function fillArrary() {//onclick 'save'
     var questionsToSave = [];
     var divInForm = document.querySelectorAll("form div")// document.getElementsByTagName("div");
+
     var inputInDiv;
     for (var i = 0; i < divInForm.length; i++) {
         inputInDiv = divInForm[i].getElementsByTagName("input");
@@ -94,7 +95,7 @@ function fillArrary() {//onclick 'save'
             || !question.answer2
             || !question.answer3
             || !question.correctAnswer) {
-            alert("שימי לב! הערכים עבור שאלה מספר:" + (i + 1) + " אינם תקינים");
+            showNotification(0, "שימי לב! הערכים עבור שאלה מספר:" + (i + 1) + " אינם תקינים");
             return;
         } else {
             questionsToSave.push(question);
@@ -111,10 +112,10 @@ function fillArrary() {//onclick 'save'
         var input = generalSettingsInputs[i];
         var inputValue = input.value;
         if (!inputValue) {
-            alert("יש למלא את כל השדות לפני השמירה");
+            showNotification(0, "יש למלא את כל השדות לפני השמירה");
             return;
         } else if (inputValue === '0' && input.min != '0') {
-            alert("הערך 0 לא חוקי עבור שמות שחקנים והגדרות כלליות");
+            showNotification(0, "הערך 0 לא חוקי עבור שמות שחקנים והגדרות כלליות");
             return;
         }
 
@@ -133,33 +134,50 @@ function fillArrary() {//onclick 'save'
     }
 
     for (let index = 0; index < questionsToSave.length; index++) {
+        var stringCorrectAnswer;
         const element = questionsToSave[index];
+        if (element.correctAnswer == 1)
+            stringCorrectAnswer = element.answer1;
+        else if (element.correctAnswer == 2)
+            stringCorrectAnswer = element.answer2;
+        else
+            stringCorrectAnswer = element.answer3;
+
         teacher.QuestionsList.push({
             Description: element.question,
             Answer1: element.answer1,
             Answer2: element.answer2,
             Answer3: element.answer3,
-            CorrectAnswer: element.correctAnswer
+            CorrectAnswer: stringCorrectAnswer
         });
 
+        debugger
+    } if (teacher.QuestionsList.length < 1) { showNotification(0, "נא למלא שאלות"); return }
+    if (teacher.TeacherName == "") { showNotification(0, "נא למלא שם מורה"); return }
+    if (teacher.Subject == "") { showNotification(0, "נא למלא מקצוע"); return }
+    if (teacher.Matter == "") { showNotification(0, "נא למלא נושא"); return }
+    if (teacher.Class == "") { showNotification(0, "נא למלא כיתה"); return }
 
-    }
+    //4444444444444444444444444444444444444
     $.ajax({
         type: 'POST',
         async: true,
         data: JSON.stringify(teacher),
         contentType: 'application/json; charset=utf-8',
         dataType: "json",
-        url: "http://localhost:58961/api/Questions/SaveQuestionsForTeacher",
+        url: "http://localhost:58961/api/Questions/SaveQuestionsForTeacher?teacher=" + teacher,
         success: function (result) {
-            if (result.d) {
-                debugger;
+
+            if (result) {
+                showNotification(1, "הנתונים נשמרו בהצלחה");
             }
+
             else {
+                showNotification(0, "אופססס הנתונים לא נשמרו");
             }
         },
         error: function (arg1, arg2, arg3) {
-            debugger;
+            showNotification(0, "אופססס הנתונים לא נשמרו");
         }
     });
 
@@ -184,13 +202,13 @@ function openTab(tabName) {
     }
     var y = document.getElementsByTagName('li');
     for (i = 0; i < y.length; i++) {
-       if (y[i].classList.contains("selectedTab"))
+        if (y[i].classList.contains("selectedTab"))
             y[i].classList.remove("selectedTab");
     }
 
 
-document.getElementById(tabName).style.display = "block";
-document.getElementsByClassName(tabName)[0].classList.add("selectedTab");
+    document.getElementById(tabName).style.display = "block";
+    document.getElementsByClassName(tabName)[0].classList.add("selectedTab");
 
 }
 
@@ -236,6 +254,8 @@ function sendQuestionsToServer() {
         var abg = new String(details[x].value);
         dataQuestions.detailsQuestions.push({ abg: (details[x].value) });
     }
+
+
     //    alert( $.post("https://localhost:44399/api/my/Get", { ttttt:dataQuestions}));
     // $(function() {
     //     $.getJSON("https://localhost:44399/api/Values/GetEmployer", function(crewResponse) {
@@ -250,7 +270,6 @@ function sendQuestionsToServer() {
     //     dataType: "string",  
     //     data: new String(dataQuestions) ,
     //     success: function (data) {
-    //         debbuger;
     //         $("#hg").InnerHtml(data);
     //         // history.pushState('', 'New URL: '+href, href); // This Code lets you to change url howyouwant
     //     }});
@@ -261,10 +280,9 @@ function sendQuestionsToServer() {
     // questionsDetails.value =dataQuestions;
 }
 
-
+//111111111111111111111111111111111111
 function searchBySub() {
     document.getElementById("myDropdown").classList.toggle("show");
-    debugger;
     $.ajax({
         type: 'GET',
         async: true,
@@ -273,22 +291,25 @@ function searchBySub() {
         dataType: "json",
         url: "http://localhost:58961/api/Questions/GetSubjects",
         success: function (result) {
-            if (result.d) {
-                setDropDownValues(result.d);
+            if (result) {
+                setDropDownValues(result);
             }
             else {
             }
         },
         error: function (arg1, arg2, arg3) {
-            debugger;
+
         }
     });
-    var TmpSubjects = ['אנגלית', 'חשבון', 'דקדוק', 'טבע', 'לינארית', 'בוליאנית'];
-    setDropDownValues(TmpSubjects);
+    //   var TmpSubjects = ['אנגלית', 'חשבון', 'דקדוק', 'טבע', 'לינארית', 'בוליאנית'];
+    // setDropDownValues(TmpSubjects);
 }
 
 function setDropDownValues(TmpSubjects) {
     var myDropDownList = document.getElementById("myDropdown");
+    if (myDropDownList.childElementCount > 1) {
+        myDropDownList.innerHTML = '<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">';
+    }
     for (var i = 0; i < TmpSubjects.length; i++) {
         var aTag = document.createElement('a');
         aTag.onclick = function () { setInputValue() };
@@ -320,52 +341,54 @@ function setInputValue() {
     for (i = 0; i < a.length; i++) {
         a[i].style.display = "none";
     }
-
+    //22222222222222222222222222222222222222
     $.ajax({
         type: 'POST',
-        async: true,
         data: JSON.stringify(inputValue.value),
+        url: "http://localhost:58961/api/Questions/GetListOfSubject?subject=" + inputValue.value,
         contentType: 'application/json; charset=utf-8',
         dataType: "json",
-        url: "http://localhost:58961/api/Questions/GetListOfSubject",
+
         success: function (result) {
-            if (result.d) {
-                resultTable(result.d);
+
+            if (result) {
+                resultTable(result);
             }
             else {
             }
         },
         error: function (arg1, arg2, arg3) {
-            debugger;
         }
     });
-    tmpSearcResult = [{
-        teacherId: '1',
-        teacherName: 'רחלי טננולד',
-        subject: 'טבע',
-        matter: 'גוף האדם',
-        class: 'ו',
-        questionnaire: '20',
-    }, {
-        teacherId: '2',
-        teacherName: 'רבקי זלקינד',
-        subject: 'טבע',
-        matter: 'חשמל',
-        class: 'ד',
-        questionnaire: '22',
-    }, {
-        teacherId: '2',
-        teacherName: 'יטי ויזל',
-        subject: 'טבע',
-        matter: 'החלל',
-        class: 'יא',
-        questionnaire: '24',
-    }];
-    resultTable(tmpSearcResult);
+
+
+
+    //tmpSearcResult = [{
+    //    teacherId: '1',
+    //    teacherName: 'רחלי טננולד',
+    //    subject: 'טבע',
+    //    matter: 'גוף האדם',
+    //    class: 'ו',
+    //    questionnaire: '20',
+    //}, {
+    //    teacherId: '2',
+    //    teacherName: 'רבקי זלקינד',
+    //    subject: 'טבע',
+    //    matter: 'חשמל',
+    //    class: 'ד',
+    //    questionnaire: '22',
+    //}, {
+    //    teacherId: '2',
+    //    teacherName: 'יטי ויזל',
+    //    subject: 'טבע',
+    //    matter: 'החלל',
+    //    class: 'יא',
+    //    questionnaire: '24',
+    //}];
+    //    resultTable(tmpSearcResult);
 }
 
 function resultTable(tmpSearcResult) {
-
     document.getElementById("searchResultTable").innerHTML = "";
     var myTableDiv = document.getElementById("searchResultTable");
 
@@ -400,7 +423,6 @@ function resultTable(tmpSearcResult) {
     tr.appendChild(td);
 
     for (var i = 0; i < tmpSearcResult.length; i++) {
-
         var tr = document.createElement('TR');
         var questionnaireId = tmpSearcResult[i].questionnaire;
         tr.onclick = function () { getQuestions(questionnaireId) };
@@ -428,41 +450,62 @@ function resultTable(tmpSearcResult) {
 }
 
 function getQuestions(questionnaireNum) {
+
     //ajacs call to fetch all question wich questionnaire == questionnaireNum;
     //success putQuestionsInInput(response.d);
-    var tmpQuestion = [{
-        questionId: 1,
-        questionDesc: 'מי ששכח על הניסים במודים',
-        answer1: 'אומר לפני שעוקר רגליו',
-        answer2: 'חוזר למודים',
-        answer3: 'אינו חוזר',
-        correctAnswer: 1,
-        questionnaire: 12,
+    $.ajax({
+        type: 'POST',
 
-    }, {
-        questionId: 2,
-        questionDesc: 'כמה ימים דלק השמן בחנוכה',
-        answer1: 'חודש',
-        answer2: 'שבוע ויום',
-        answer3: 'שישה ימים',
-        correctAnswer: 2,
-        questionnaire: 12,
+        data: JSON.stringify(questionnaireNum),
+        url: "http://localhost:58961/api/Questions/GetQuestionsList?questionaire=" + questionnaireNum,
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
 
-    }, {
-        questionId: 3,
-        questionDesc: 'מי ששכח על הניסים בברכת המזון',
-        answer1: 'חוזר לראש',
-        answer2: 'אומר בהרחמן',
-        answer3: 'אינו חוזר',
-        correctAnswer: 2,
-        questionnaire: 12,
+        success: function (result) {
+            if (result) {
+                putQuestionsInInput(result);
+            }
+            else {
+            }
+        },
+        error: function (arg1, arg2, arg3) {
 
-    }];
-    putQuestionsInInput(tmpQuestion);
+
+        }
+    });
+
+    //var tmpQuestion = [{
+    //    questionId: 1,
+    //    questionDesc: 'מי ששכח על הניסים במודים',
+    //    answer1: 'אומר לפני שעוקר רגליו',
+    //    answer2: 'חוזר למודים',
+    //    answer3: 'אינו חוזר',
+    //    correctAnswer: 1,
+    //    questionnaire: 12,
+
+    //}, {
+    //    questionId: 2,
+    //    questionDesc: 'כמה ימים דלק השמן בחנוכה',
+    //    answer1: 'חודש',
+    //    answer2: 'שבוע ויום',
+    //    answer3: 'שישה ימים',
+    //    correctAnswer: 2,
+    //    questionnaire: 12,
+
+    //}, {
+    //    questionId: 3,
+    //    questionDesc: 'מי ששכח על הניסים בברכת המזון',
+    //    answer1: 'חוזר לראש',
+    //    answer2: 'אומר בהרחמן',
+    //    answer3: 'אינו חוזר',
+    //    correctAnswer: 2,
+    //    questionnaire: 12,
+
+    //}];
+    //putQuestionsInInput(tmpQuestion);
 }
 
 function putQuestionsInInput(tmpQuestion) {
-
     document.getElementById('fillDataQuestion').innerHTML = "";
     for (var q = 0; q < tmpQuestion.length; q++) {
         var para = document.createElement('div');
@@ -488,6 +531,13 @@ function putQuestionsInInput(tmpQuestion) {
             para.appendChild(input);
         }
         //the correct answer
+        var numCorrectAnswer;
+        if (tmpQuestion[q].answer1 == tmpQuestion[q].CorrectAnswer)
+            numCorrectAnswer = 1;
+        else if (tmpQuestion[q].answer1 == tmpQuestion[q].CorrectAnswer)
+            numCorrectAnswer = 2;
+        else
+            numCorrectAnswer = 3;
         label = document.createElement('label');
         label.innerHTML = 'מס תשובה נכונה';
         para.appendChild(label);
@@ -496,7 +546,7 @@ function putQuestionsInInput(tmpQuestion) {
         input.setAttribute('type', 'number');
         input.setAttribute('max', '3');
         input.setAttribute('min', '1');
-        input.setAttribute('value', tmpQuestion[q].correctAnswer);
+        input.setAttribute('value', numCorrectAnswer);
         input.setAttribute('require', 'require');
 
         para.classList.add("question-card");
@@ -519,7 +569,7 @@ function putQuestionsInInput(tmpQuestion) {
 
 }
 
-function startGame(){
+function startGame() {
     var questionsToSave = [];
     var divInForm = document.getElementsByClassName("question-card")// document.getElementsByTagName("div");
     var inputInDiv;
@@ -537,41 +587,63 @@ function startGame(){
             || !question.answer2
             || !question.answer3
             || !question.correctAnswer) {
-            alert("שימי לב! הערכים עבור שאלה מספר:" + (i + 1) + " אינם תקינים");
+            showNotification(0, "שימי לב! הערכים עבור שאלה מספר:" + (i + 1) + " אינם תקינים");
             return;
         } else {
             questionsToSave.push(question);
         }
     }
-    
+
     var dataObjForSave = {};
     dataObjForSave.date = new Date();
     var generalSettings = '';
     var generalSettingsInputs = document.querySelectorAll('[save-as]');
-    for (var i = 0; i < generalSettingsInputs.length; i++) {    
-        var input = generalSettingsInputs[i];      
+    for (var i = 0; i < generalSettingsInputs.length; i++) {
+        var input = generalSettingsInputs[i];
         var inputValue = input.value;
-         if(!inputValue) {
-            alert("על כל השדות להיות מלאים לפני תחילת משחק");
+        if (!inputValue) {
+            showNotification(0, "על כל השדות להיות מלאים לפני תחילת משחק")
             return;
-        } 
+        }
         else if (inputValue === '0' && input.min != '0') {
-            alert("הערך 0 לא חוקי עבור שמות שחקנים והגדרות כלליות");
+            showNotification(0, "הערך 0 לא חוקי עבור שמות שחקנים והגדרות כלליות")
             return;
         }
 
         //TODO add validation
         dataObjForSave[input.getAttribute('save-as')] = inputValue;
-        
+
     }
     localStorage.questions = JSON.stringify(questionsToSave);
     //window.data = dataObjForSave;
     localStorage.data = JSON.stringify(dataObjForSave);
-    console.log("localStorage.data:  "+localStorage.data);
-    console.log("localStorage.questions:  "+localStorage.questions)
+    console.log("localStorage.data:  " + localStorage.data);
+    console.log("localStorage.questions:  " + localStorage.questions)
     var url = window.location.href;
-    var newurl = url.split('/').slice(0,-1).join('/')+'/bord.html';    
+    var newurl = url.split('/').slice(0, -1).join('/') + '/bord.html';
     window.location.assign(newurl);
+}
+function showNotification(result, stringNotification) {
+    if (result == 0) {
+
+        $(".notify").addClass("active");
+
+        document.getElementById('notifyType').innerHTML = stringNotification;
+        document.getElementById('notifyType').classList.add("failure");
+        setTimeout(function () {
+            $(".notify").removeClass("active");
+            $("#notifyType").removeClass("failure");
+        }, 2000)
+    }
+    else {
+        $(".notify").toggleClass("active");
+        document.getElementById('notifyType').innerHTML = stringNotification;
+        document.getElementById('notifyType').classList.add("success");
+        setTimeout(function () {
+            $(".notify").removeClass("active");
+            $("#notifyType").removeClass("success");
+        }, 2000);
+    }
 }
 
 

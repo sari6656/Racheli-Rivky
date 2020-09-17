@@ -60,54 +60,54 @@ h4 {
     top: 0;
 }
 
-.navbar a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-}
+    .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
 
-.navbar a.right {
-    float: right;
-}
+        .navbar a.right {
+            float: right;
+        }
 
-.navbar #home:hover {
-    background: url(../resources/images/תמונות\ לפרויקט/homeicon.png);
-    color: rgba(87, 84, 84, 0);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 40px;
-    background-color: #666;
-}
+    .navbar #home:hover {
+        background: url(../resources/images/תמונות\ לפרויקט/homeicon.png);
+        color: rgba(87, 84, 84, 0);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 40px;
+        background-color: #666;
+    }
 
-.navbar #about:hover {
-    background: url(../resources/images/תמונות\ לפרויקט/abouticon.png);
-    color: rgba(87, 84, 84, 0);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 40px;
-    background-color: #666;
-}
+    .navbar #about:hover {
+        background: url(../resources/images/תמונות\ לפרויקט/abouticon.png);
+        color: rgba(87, 84, 84, 0);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 40px;
+        background-color: #666;
+    }
 
-.navbar #instructions:hover {
-    background: url(../resources/images/תמונות\ לפרויקט/instructions.png);
-    color: rgba(87, 84, 84, 0);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 40px;
-    background-color: #666;
-}
+    .navbar #instructions:hover {
+        background: url(../resources/images/תמונות\ לפרויקט/instructions.png);
+        color: rgba(87, 84, 84, 0);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 40px;
+        background-color: #666;
+    }
 
-.navbar #play:hover {
-    background: url(../resources/images/תמונות\ לפרויקט/playicon.png);
-    color: rgba(87, 84, 84, 0);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 40px;
-    background-color: #666;
-}
+    .navbar #play:hover {
+        background: url(../resources/images/תמונות\ לפרויקט/playicon.png);
+        color: rgba(87, 84, 84, 0);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 40px;
+        background-color: #666;
+    }
 
 /* .navbar a.active {
     background-color: #666;
@@ -169,9 +169,9 @@ h4 {
     cursor: pointer;
 }
 
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #f1b229;
-}
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #f1b229;
+    }
 
 #myInput {
     box-sizing: border-box;
@@ -184,9 +184,9 @@ h4 {
     border-bottom: 1px solid #ddd;
 }
 
-#myInput:focus {
-    outline: 3px solid #ddd;
-}
+    #myInput:focus {
+        outline: 3px solid #ddd;
+    }
 
 .dropdown {
     position: relative;
@@ -203,12 +203,12 @@ h4 {
     z-index: 1;
 }
 
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
 
 .dropdown a:hover {
     background-color: #ddd;
@@ -217,30 +217,80 @@ h4 {
 .show {
     display: block;
 }
-#searchResultTable{
+
+#searchResultTable {
     margin-top: 90px;
     width: fit-content;
     font-size: 25px;
     color: black;
 }
-#searchResultTable tr{
-    border: 1px solid #eeb42e;
-    cursor: pointer;
-    margin-bottom: 5px;
-}
-#searchResultTable td{
-    padding-right: 20px;
-    padding-left: 20px;
 
-}
-#searchResultTable .bold{
-    font-weight: bold;
-}
+    #searchResultTable tr {
+        border: 1px solid #eeb42e;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
 
-#searchResultTable .no-border{
-   cursor: default;
-   border: none;
-}
-.selectedTab{
+    #searchResultTable td {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    #searchResultTable .bold {
+        font-weight: bold;
+    }
+
+    #searchResultTable .no-border {
+        cursor: default;
+        border: none;
+    }
+
+.selectedTab {
     background-color: #cccccc;
+}
+
+
+
+#success {
+    background: #03a679;
+    color: #f0f0f0;
+}
+
+#failure {
+    background: #ff3939;
+    color: #f0f0f0;
+}
+
+.notify {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 0;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: height .2s;
+}
+
+#notifyType:before {
+    display: block;
+    margin-top: 15px;
+}
+
+.active {
+    height: 50px;
+}
+
+.success {
+    display: block;
+    margin-top: 30px;
+    background-color: lawngreen;
+}
+
+.failure {
+    background-color: red;
+    display: block;
+    margin-top: 30px;
 }
