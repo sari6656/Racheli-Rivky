@@ -5,7 +5,7 @@ function addQuestion(addFirst) {//make the tamplate
     var para = document.createElement('div');
     var label = document.createElement('label');
 
-    label.innerHTML = 'שאלה';
+    label.innerHTML = 'ùàìä';
     para.appendChild(label);
 
     var input = document.createElement('input');
@@ -14,7 +14,7 @@ function addQuestion(addFirst) {//make the tamplate
     //the answers
     for (var i = 1; i <= 3; i++) {
         label = document.createElement('label');
-        label.innerHTML = 'תשובה' + i;
+        label.innerHTML = 'úùåáä' + i;
         para.appendChild(label);
 
         input = document.createElement('input');
@@ -24,7 +24,7 @@ function addQuestion(addFirst) {//make the tamplate
     }
     //the correct answer
     label = document.createElement('label');
-    label.innerHTML = 'מס תשובה נכונה';
+    label.innerHTML = 'îñ úùåáä ðëåðä';
     para.appendChild(label);
 
     input = document.createElement('input');
@@ -40,7 +40,7 @@ function addQuestion(addFirst) {//make the tamplate
     //the button 'remove question'
     input = document.createElement('input');
     input.setAttribute('type', 'button');
-    input.setAttribute('value', 'הסר שאלה');
+    input.setAttribute('value', 'äñø ùàìä');
     input.addEventListener("click", function () { removeQuestion(event); })
     para.appendChild(input);
     if (addFirst) {
@@ -75,9 +75,9 @@ function fillDivs() {//on click 'view the questions'
         inputInDiv[4].value = data.questions[i].correctAnswer;
     }
 }
-
+var questionsToSave = [];
 function fillArrary() {//onclick 'save'
-    var questionsToSave = [];
+
     var divInForm = document.querySelectorAll("form div")// document.getElementsByTagName("div");
 
     var inputInDiv;
@@ -95,7 +95,7 @@ function fillArrary() {//onclick 'save'
             || !question.answer2
             || !question.answer3
             || !question.correctAnswer) {
-            showNotification(0, "שימי לב! הערכים עבור שאלה מספר:" + (i + 1) + " אינם תקינים");
+            showNotification(0, "ùéîé ìá! äòøëéí òáåø ùàìä îñôø:" + (i + 1) + " àéðí ú÷éðéí");
             return;
         } else {
             questionsToSave.push(question);
@@ -112,10 +112,10 @@ function fillArrary() {//onclick 'save'
         var input = generalSettingsInputs[i];
         var inputValue = input.value;
         if (!inputValue) {
-            showNotification(0, "יש למלא את כל השדות לפני השמירה");
+            showNotification(0, "éù ìîìà àú ëì äùãåú ìôðé äùîéøä");
             return;
         } else if (inputValue === '0' && input.min != '0') {
-            showNotification(0, "הערך 0 לא חוקי עבור שמות שחקנים והגדרות כלליות");
+            showNotification(0, "äòøê 0 ìà çå÷é òáåø ùîåú ùç÷ðéí åäâãøåú ëììéåú");
             return;
         }
 
@@ -151,12 +151,8 @@ function fillArrary() {//onclick 'save'
             CorrectAnswer: stringCorrectAnswer
         });
 
-        debugger
-    } if (teacher.QuestionsList.length < 1) { showNotification(0, "נא למלא שאלות"); return }
-    if (teacher.TeacherName == "") { showNotification(0, "נא למלא שם מורה"); return }
-    if (teacher.Subject == "") { showNotification(0, "נא למלא מקצוע"); return }
-    if (teacher.Matter == "") { showNotification(0, "נא למלא נושא"); return }
-    if (teacher.Class == "") { showNotification(0, "נא למלא כיתה"); return }
+
+    }
 
     //4444444444444444444444444444444444444
     $.ajax({
@@ -169,15 +165,15 @@ function fillArrary() {//onclick 'save'
         success: function (result) {
 
             if (result) {
-                showNotification(1, "הנתונים נשמרו בהצלחה");
+                showNotification(1, "äðúåðéí ðùîøå áäöìçä");
             }
 
             else {
-                showNotification(0, "אופססס הנתונים לא נשמרו");
+                showNotification(0, "àåôñññ äðúåðéí ìà ðùîøå");
             }
         },
         error: function (arg1, arg2, arg3) {
-            showNotification(0, "אופססס הנתונים לא נשמרו");
+            showNotification(0, "àåôñññ äðúåðéí ìà ðùîøå");
         }
     });
 
@@ -245,6 +241,17 @@ function copyToClip(str) {
     document.execCommand("copy");
 
 };
+function checkIsFill() {
+    var checkTeacherName = document.getElementById("teacherName").value;
+    var checkSubject = document.getElementById("subject").value;
+    var checkMatter = document.getElementById("matter").value;
+    var checkClassNumber = document.getElementById("classNumber").value;
+    var checkQuestions = document.getElementById("fillDataQuestion").innerHTML;
+    if (checkTeacherName && checkSubject && checkMatter && checkClassNumber && checkQuestions != "") {
+        document.getElementById("mySave").disabled = false;
+        document.getElementById("mySave").style.cursor = "pointer";
+    }
+}
 
 function sendQuestionsToServer() {
     fillArrary();
@@ -301,8 +308,6 @@ function searchBySub() {
 
         }
     });
-    //   var TmpSubjects = ['אנגלית', 'חשבון', 'דקדוק', 'טבע', 'לינארית', 'בוליאנית'];
-    // setDropDownValues(TmpSubjects);
 }
 
 function setDropDownValues(TmpSubjects) {
@@ -365,24 +370,24 @@ function setInputValue() {
 
     //tmpSearcResult = [{
     //    teacherId: '1',
-    //    teacherName: 'רחלי טננולד',
-    //    subject: 'טבע',
-    //    matter: 'גוף האדם',
-    //    class: 'ו',
+    //    teacherName: 'øçìé èððåìã',
+    //    subject: 'èáò',
+    //    matter: 'âåó äàãí',
+    //    class: 'å',
     //    questionnaire: '20',
     //}, {
     //    teacherId: '2',
-    //    teacherName: 'רבקי זלקינד',
-    //    subject: 'טבע',
-    //    matter: 'חשמל',
-    //    class: 'ד',
+    //    teacherName: 'øá÷é æì÷éðã',
+    //    subject: 'èáò',
+    //    matter: 'çùîì',
+    //    class: 'ã',
     //    questionnaire: '22',
     //}, {
     //    teacherId: '2',
-    //    teacherName: 'יטי ויזל',
-    //    subject: 'טבע',
-    //    matter: 'החלל',
-    //    class: 'יא',
+    //    teacherName: 'éèé åéæì',
+    //    subject: 'èáò',
+    //    matter: 'äçìì',
+    //    class: 'éà',
     //    questionnaire: '24',
     //}];
     //    resultTable(tmpSearcResult);
@@ -403,22 +408,22 @@ function resultTable(tmpSearcResult) {
     tableBody.appendChild(tr);
 
     var td = document.createElement('TD');
-    td.appendChild(document.createTextNode('שם מורה'));
+    td.appendChild(document.createTextNode('ùí îåøä'));
     td.className += "bold";
     tr.appendChild(td);
 
     var td = document.createElement('TD');
-    td.appendChild(document.createTextNode('מקצוע'));
+    td.appendChild(document.createTextNode('î÷öåò'));
     td.className += "bold";
     tr.appendChild(td);
 
     var td = document.createElement('TD');
-    td.appendChild(document.createTextNode('נושא'));
+    td.appendChild(document.createTextNode('ðåùà'));
     td.className += "bold";
     tr.appendChild(td);
 
     var td = document.createElement('TD');
-    td.appendChild(document.createTextNode('כיתה'));
+    td.appendChild(document.createTextNode('ëéúä'));
     td.className += "bold";
     tr.appendChild(td);
 
@@ -476,28 +481,28 @@ function getQuestions(questionnaireNum) {
 
     //var tmpQuestion = [{
     //    questionId: 1,
-    //    questionDesc: 'מי ששכח על הניסים במודים',
-    //    answer1: 'אומר לפני שעוקר רגליו',
-    //    answer2: 'חוזר למודים',
-    //    answer3: 'אינו חוזר',
+    //    questionDesc: 'îé ùùëç òì äðéñéí áîåãéí',
+    //    answer1: 'àåîø ìôðé ùòå÷ø øâìéå',
+    //    answer2: 'çåæø ìîåãéí',
+    //    answer3: 'àéðå çåæø',
     //    correctAnswer: 1,
     //    questionnaire: 12,
 
     //}, {
     //    questionId: 2,
-    //    questionDesc: 'כמה ימים דלק השמן בחנוכה',
-    //    answer1: 'חודש',
-    //    answer2: 'שבוע ויום',
-    //    answer3: 'שישה ימים',
+    //    questionDesc: 'ëîä éîéí ãì÷ äùîï áçðåëä',
+    //    answer1: 'çåãù',
+    //    answer2: 'ùáåò åéåí',
+    //    answer3: 'ùéùä éîéí',
     //    correctAnswer: 2,
     //    questionnaire: 12,
 
     //}, {
     //    questionId: 3,
-    //    questionDesc: 'מי ששכח על הניסים בברכת המזון',
-    //    answer1: 'חוזר לראש',
-    //    answer2: 'אומר בהרחמן',
-    //    answer3: 'אינו חוזר',
+    //    questionDesc: 'îé ùùëç òì äðéñéí ááøëú äîæåï',
+    //    answer1: 'çåæø ìøàù',
+    //    answer2: 'àåîø áäøçîï',
+    //    answer3: 'àéðå çåæø',
     //    correctAnswer: 2,
     //    questionnaire: 12,
 
@@ -511,7 +516,7 @@ function putQuestionsInInput(tmpQuestion) {
         var para = document.createElement('div');
         var label = document.createElement('label');
 
-        label.innerHTML = 'שאלה';
+        label.innerHTML = 'ùàìä';
         para.appendChild(label);
 
         var input = document.createElement('input');
@@ -521,7 +526,7 @@ function putQuestionsInInput(tmpQuestion) {
         //the answers
         for (var i = 1; i <= 3; i++) {
             label = document.createElement('label');
-            label.innerHTML = 'תשובה' + i;
+            label.innerHTML = 'úùåáä' + i;
             para.appendChild(label);
 
             input = document.createElement('input');
@@ -539,7 +544,7 @@ function putQuestionsInInput(tmpQuestion) {
         else
             numCorrectAnswer = 3;
         label = document.createElement('label');
-        label.innerHTML = 'מס תשובה נכונה';
+        label.innerHTML = 'îñ úùåáä ðëåðä';
         para.appendChild(label);
 
         input = document.createElement('input');
@@ -555,7 +560,7 @@ function putQuestionsInInput(tmpQuestion) {
         //the button 'remove question'
         input = document.createElement('input');
         input.setAttribute('type', 'button');
-        input.setAttribute('value', 'הסר שאלה');
+        input.setAttribute('value', 'äñø ùàìä');
         input.addEventListener("click", function () { removeQuestion(event); })
         para.appendChild(input);
 
@@ -587,7 +592,7 @@ function startGame() {
             || !question.answer2
             || !question.answer3
             || !question.correctAnswer) {
-            showNotification(0, "שימי לב! הערכים עבור שאלה מספר:" + (i + 1) + " אינם תקינים");
+            showNotification(0, "ùéîé ìá! äòøëéí òáåø ùàìä îñôø:" + (i + 1) + " àéðí ú÷éðéí");
             return;
         } else {
             questionsToSave.push(question);
@@ -602,11 +607,11 @@ function startGame() {
         var input = generalSettingsInputs[i];
         var inputValue = input.value;
         if (!inputValue) {
-            showNotification(0, "על כל השדות להיות מלאים לפני תחילת משחק")
+            showNotification(0, "òì ëì äùãåú ìäéåú îìàéí ìôðé úçéìú îùç÷")
             return;
         }
         else if (inputValue === '0' && input.min != '0') {
-            showNotification(0, "הערך 0 לא חוקי עבור שמות שחקנים והגדרות כלליות")
+            showNotification(0, "äòøê 0 ìà çå÷é òáåø ùîåú ùç÷ðéí åäâãøåú ëììéåú")
             return;
         }
 

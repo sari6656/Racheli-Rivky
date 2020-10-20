@@ -88,11 +88,11 @@
     <div id="save" class="w3-container city">
         <form id="questionnaireDetails" onsubmit="sendQuestionsToServer()">
             <b>כדי שהשאלות יישמרו במערכת אנא מלאי את הפרטים הבאים:</b>
-            <input type="text" class="questionnaireDetailsInput dataToServer" id="teacherName" placeholder="שם המורה" />
-            <input type="text" class="questionnaireDetailsInput dataToServer" id="subject" placeholder="מקצוע השאלות" />
-            <input type="text" class="questionnaireDetailsInput dataToServer" id="matter" placeholder="נושא השאלות" />
-            <input type="text" class="questionnaireDetailsInput dataToServer" id="classNumber" placeholder="כיתה" />
-            <input type="submit" class="questionnaireDetailsInput" value="לשמירה" />
+            <input type="text" onkeyup="checkIsFill()" class="questionnaireDetailsInput dataToServer" id="teacherName" placeholder="שם המורה" />
+            <input type="text" onkeyup="checkIsFill()" class="questionnaireDetailsInput dataToServer" id="subject" placeholder="מקצוע השאלות" />
+            <input type="text" onkeyup="checkIsFill()" class="questionnaireDetailsInput dataToServer" id="matter" placeholder="נושא השאלות" />
+            <input type="text" onkeyup="checkIsFill()" class="questionnaireDetailsInput dataToServer" id="classNumber" placeholder="כיתה" />
+            <input type="submit" disabled="disabled" class="questionnaireDetailsInput" value="לשמירה" id="mySave" />
             <!-- <asp:HiddenField id="sendDataToServer" runat="server"/> -->
         </form>
     </div>
@@ -113,7 +113,6 @@
             <button onclick="searchBySub()" class="dropbtn">לחיפוש לפי מקצוע</button>
             <div id="myDropdown" class="dropdown-content">
                 <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-
             </div>
         </div>
         <div id="searchResultTable">
